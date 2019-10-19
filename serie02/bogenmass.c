@@ -3,18 +3,7 @@
 #include <math.h>
 
 /*
-    A recursive function which subtracts 360 from a 
-    given degree value until value < 360
-*/
-double reduce_degrees(double degrees) {
-  if (degrees >= 360.) {
-    return reduce_degrees(degrees - 360.);
-  }
-  return degrees;
-}
-
-/*
-    Converts degrees to randians.
+    Converts degrees to radians.
     Outputs a reduced form in the interval [0, 2*pi)
 */
 double bogenmass(double degrees) {
