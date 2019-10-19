@@ -1,4 +1,6 @@
+#define _USE_MATH_DEFINES
 #include <stdio.h>
+#include <math.h>
 
 /*
     A recursive function which subtracts 360 from a 
@@ -16,16 +18,7 @@ double reduce_degrees(double degrees) {
     Outputs a reduced form in the interval [0, 2*pi)
 */
 double bogenmass(double degrees) {
-  // round down first
-  
-  // no loops allowed duh
-  //while (degrees > 360.) {
-  //  degrees = degrees - 360.;
-  //}
- 
-  degrees = reduce_degrees(degrees);
-  
-  return (degrees * 3.141592) / 180;
+  return (fmod(degrees, 360) * M_PI) / 180;
 }
 
 int main() {
@@ -42,6 +35,6 @@ int main() {
   }
 
   // convert and output
-  printf("Radians: %lf\n", (degrees * 3.1415) / 180); 
+  printf("Radians: %lf\n", bogenmass(degrees)); 
 }
 

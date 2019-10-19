@@ -79,7 +79,7 @@ void kurvendiskussion(double a, double b, double c) {
 	}
 
 
-	// Extremum caluclation
+	// Extremum calculation
 	extremum_x = -b / (2.*c);
 
 	// Extremum output
