@@ -15,7 +15,6 @@ void punkte(double x, double y, double u, double v, double a, double b) {
 }
 
 int main() {
-	bool debug = true;
 	double x = 1;
 	double y = 1;
 	double u = 1;
@@ -24,14 +23,12 @@ int main() {
 	double b = 5;
 
 	// input
-	if (!debug) {
-		printf("x: "); scanf("%lf", &x);
-		printf("y: "); scanf("%lf", &y);
-		printf("u: "); scanf("%lf", &u);
-		printf("v: "); scanf("%lf", &v);
-		printf("a: "); scanf("%lf", &a);
-		printf("b: "); scanf("%lf", &b);
-	}
+	printf("x: "); scanf("%lf", &x);
+	printf("y: "); scanf("%lf", &y);
+	printf("u: "); scanf("%lf", &u);
+	printf("v: "); scanf("%lf", &v);
+	printf("a: "); scanf("%lf", &a);
+	printf("b: "); scanf("%lf", &b);
 
 	// function call
 	punkte(x, y, u, v, a, b);

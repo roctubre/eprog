@@ -22,8 +22,9 @@ int main()
 	// validate input
 	if (n < 0) {
 		printf("Only non-negative values allowed!\n");
+        return 0;
 	}
 
 	// function call and output
-	printf("Fibbonacci n-th element: %ld", fibonacci(n));
+	printf("Fibbonacci n-th element: %ld\n", fibonacci(n));
 }

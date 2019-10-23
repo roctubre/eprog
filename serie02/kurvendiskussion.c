@@ -26,7 +26,7 @@ void kurvendiskussion(double a, double b, double c) {
 			}
 		}
 		else {
-			printf("Intersection at:\nx = %.2lf\n", b);
+			printf("Intersection at:\nx = %.2lf\n", -a/b);
 		}
 	}
 	else if (discriminant >= 0)

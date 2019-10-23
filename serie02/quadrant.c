@@ -7,7 +7,7 @@
 	- y-axis (ordinate)
 	- Quadrant 1, 2, 3, 4
 */
-void quadrant(double &x, double &y) {
+void quadrant(double x, double y) {
 	if (x == 0 || y == 0) {
 		if (x == 0) {
 			printf("Point is on the ordinate.\n");

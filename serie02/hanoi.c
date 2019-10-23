@@ -24,12 +24,12 @@ void hanoi(int m, int i, int j) {
 		k = 1;
 	}
     
-    // move from source to spare
+	// move from source to spare
 	hanoi(m - 1, i, k);
     
 	printf("Move disk %d from post #%d to post #%d\n", m, i, j);
     
-    // move from spare to target
+	// move from spare to target
 	hanoi(m - 1, k, j);
 }
 
