@@ -1,7 +1,4 @@
-#include "pch.h"
 #include <stdio.h>
-
-using namespace std;
 
 /*
 	Determines the location of a given point.

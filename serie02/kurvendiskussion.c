@@ -1,38 +1,5 @@
 #include <stdio.h>
-
-/*
-	Recusive function to calculate the square root of a given value using binary search.
-	Limited to 5 decimal points, since it might cause stack overflow on greater precision.
-*/
-double sqrt_routine(double value, double n1, double n2)
-{
-	double result = 0.;
-
-	// compares the first 5 decimal points by first multiplying by 1E5, and typecasting to integer
-	if ((int)(n2*n2*1E5) == (int)(value*1E5)) {					
-		return n2;
-	}
-
-	// binary search
-	if (n2*n2 < value) {
-		result = sqrt_routine(value, n2, n2 + (n2 - n1));
-	}
-	if (n2*n2 > value)
-	{
-		result = sqrt_routine(value, n1, n1 + (n2 - n1) / 2);
-	}
-
-	return result;
-}
-
-/*
-	Returns the square root of a given value.
-	Wrapper function for the recursive call.
-*/
-double sqrt(double value) {
-	return value == 0 ? 0 : sqrt_routine(value, 0., 1.);
-}
-
+#include <math.h>
 
 /*
 	Calculates and outputs the intersection points on the x-axis and 
