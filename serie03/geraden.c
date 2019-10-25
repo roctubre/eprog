@@ -31,29 +31,29 @@ int geraden(double u[3], double v[3], double s[2]) {
 }
 
 int main() {
-	double u[3] = {1,2,3};
-	double v[3] = {4,8,13};
-	double s[2] = {9,9};
+    double u[3] = {1,2,3};
+    double v[3] = {4,8,13};
+    double s[2] = {9,9};
     int output = 0;
-	
-	// get input
-    printf("# First line (a)x+(b)y=c");
-	printf("a: "); scanf("%lf", &u[0]);
-	printf("b: "); scanf("%lf", &u[1]);
-	printf("c: "); scanf("%lf", &u[2]);
-    printf("# Second line (d)x+(e)y=f");
-	printf("d: "); scanf("%lf", &v[0]);
-	printf("e: "); scanf("%lf", &v[1]);
-	printf("f: "); scanf("%lf", &v[2]);
+    
+    // get input
+    printf("# First line (a)x+(b)y=(c)\n");
+    printf("a: "); scanf("%lf", &u[0]);
+    printf("b: "); scanf("%lf", &u[1]);
+    printf("c: "); scanf("%lf", &u[2]);
+    printf("# Second line (d)x+(e)y=(f)\n");
+    printf("d: "); scanf("%lf", &v[0]);
+    printf("e: "); scanf("%lf", &v[1]);
+    printf("f: "); scanf("%lf", &v[2]);
     
     // validate input
     if (u[0] == 0 || u[1] == 0 || v[0] == 0 || v[1] == 0) {
-        printf("Coefficients can't be zero.");
+        printf("Coefficients can't be zero.\n");
         return 0;
     }
 
-	// function call and output
-	output = geraden(u, v, s);
+    // function call and output
+    output = geraden(u, v, s);
     
     if (output == 0) {
         printf("=> IDENTICAL\n");
