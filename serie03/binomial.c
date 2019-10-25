@@ -26,10 +26,10 @@ int main() {
     }
 
     // OUTPUT RESULTS
-    // direct; factorial function; O(n)
+    // direct; factorial function; O(n+k)
     printf("Method: DIRECT | Result: %d\n", binomial(n, k, 1));
     
-    // reduced form; loops; O(n)
+    // reduced form; loops; O(n+k)
     printf("Method: REDUCED | Result: %d\n", binomial(n, k, 2));
 
     // recursive; O(2^n)
@@ -76,11 +76,11 @@ int binomial_loop(int n, int k) {
     int numerator = 1;
     int denominator = 1;
 
-    for (int nn = n; nn >= (n - k + 1);--nn) {
+    for (int nn = n; nn >= (n - k + 1); --nn) {
         numerator *= nn;
     }
 
-    for (int kk = k; kk >= 1;--kk) {
+    for (int kk = k; kk >= 1; --kk) {
         denominator *= kk;
     }
 
