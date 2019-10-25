@@ -10,12 +10,12 @@ int main() {
 	
 	// input
 	/*
-	printf("a: "); scanf("%lf", &a);
-	printf("b: "); scanf("%lf", &b);
-	printf("c: "); scanf("%lf", &c);
-	printf("x: "); scanf("%lf", &x);
-	printf("y: "); scanf("%lf", &y);
-	printf("z: "); scanf("%lf", &z);
+	printf("a: "); scanf("%lf", &u[0]);
+	printf("b: "); scanf("%lf", &u[1]);
+	printf("c: "); scanf("%lf", &u[2]);
+	printf("x: "); scanf("%lf", &v[0]);
+	printf("y: "); scanf("%lf", &v[1]);
+	printf("z: "); scanf("%lf", &v[2]);
 	*/
 	
 	// output scalar product

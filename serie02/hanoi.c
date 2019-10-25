@@ -6,22 +6,11 @@
 	For n disks, a total of 2^n-1 moves are taken.
 */
 void hanoi(int m, int i, int j) {
-	int k = 0;  //spare post
+	int k = 6 - (i + j);  //spare post
 
 	if (m == 1) {
 		printf("Move disk 1 from post #%d to post #%d\n", i, j);
 		return;
-	}
-
-	// get index of spare post
-	if (i != 3 && j != 3) {
-		k = 3;
-	}
-	else if (i != 2 && j != 2) {
-		k = 2;
-	}
-	else {
-		k = 1;
 	}
     
 	// move from source to spare
