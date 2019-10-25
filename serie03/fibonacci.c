@@ -8,16 +8,16 @@ int fibonacci(int k) {
     if (k == 0) return 0;
     if (k == 1) return 1;
 
-    int n_1 = 0;
-    int n_2 = 1;
+    int prev = 0;    // (n-1)-th fib element
+    int curr = 1;    // (n)-th fib element
 
-    // gets the elements (k-1) and (k-2)
-    for (int i = 2; i < k; ++i) {
-        n_2 += n_1;
-        n_1 = n_2 - n_1;
+    // gets the elements (k) and (k-1)
+    for (int n = 2; n <= k; ++n) {
+        curr += prev;
+        prev = curr - prev;
     }
 
-    return n_1 + n_2;
+    return curr;
 }
 
 int main() {
