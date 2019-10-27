@@ -17,15 +17,20 @@ int main() {
     }
 
     // function call
-    pascal(n);
-
+    pascals_triangle(n);
 }
 
 
 /*
     Prints out Pascal's triangle down to the n-th line.
+    Example: n = 5
+    1
+    1   1
+    1   2   1
+    1   3   3   1
+    1   4   6   4   1
 */
-void pascal(int n) {
+void pascals_triangle(int n) {
     // iterate through all lines from top to n-th line
     for (int line = 0; line < n; ++line) {
         // print out binomial coefficient of every element
