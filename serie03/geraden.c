@@ -14,10 +14,10 @@
        -1 ... intersect
 */
 int geraden(double u[3], double v[3], double s[2]) {
-    // compare slopes
+    // compare slopes (-a/b) == (-d/e); from y = (k)x + d
     if (-u[0]/u[1] == -v[0]/v[1]) {
-        //compare y-intercept
-        if (-u[2]/u[1] == -v[2]/v[1]) {
+        //compare y-intercept (c/b) == (f/e); from y = kx + (d)
+        if (u[2]/u[1] == v[2]/v[1]) {
             return 0;
         }
         return 1;
