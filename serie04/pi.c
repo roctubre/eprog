@@ -5,11 +5,10 @@ double leibnitz_loop(int n);
 double leibnitz_recursive(int n);
 
 int main() {
-    int n;
+    int n;  
 
     // get input
     printf("n: "); scanf("%d", &n);
-
 
     // validate input
     if (n <= 0) {
