@@ -35,7 +35,7 @@ void kreuz(int n) {
     for (int i = 0; i < 2*n - 1; ++i) {
         // iterate through characters (each line has 2n - 1 characters)
         for (int j = 0; j < 2*n - 1; ++j) {
-            // print out the line number or an empty character
+            // print out the number or an empty character
             if(j == i || j == (2*n-1) - 1*(i+1)) {
                 if (i + 1 <= n) {   // first n lines
                     printf("%d", i + 1);

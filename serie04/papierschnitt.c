@@ -1,73 +1,64 @@
 #include <stdio.h>
 
-int addElementToArray(int arr[], int arrlen, int e, int newarr[]);
-void papierschnitt_rec(int n, int r, int seq[], int seqlen);
+#define MAXLEN 100
+
+void papierschnitt_rec(int r, int seqlen);
 void papierschnitt(int n);
 
-int main() {
-    int n;
+// global variables
+int sequence[MAXLEN];
+int n;
 
+int main() {
     // get input
     printf("n: "); scanf("%d", &n);
 
     // validate input
-    if (n <= 0) {
-        printf("n must be greater than 0");
+    if (n <= 0 && n > MAXLEN) {
+        printf("n must be between 1 and %d", MAXLEN);
         return 0;
     }
 
-    // check sequence and output result
-    papierschnitt(n);
-}
-
-
-/*
-    Adds an element to an array by first copying a source array A to a larger
-    target array B and then adding e to the last index of B.
-    
-*/
-int addElementToArray(int arr[], int arrlen, int e, int newarr[]) {
-    for (int i = 0; i < arrlen; ++i) {
-        newarr[i] = arr[i];
+    // init global array
+    for (int i = 0; i < MAXLEN; ++i) {
+        sequence[i] = 0;
     }
-    newarr[arrlen] = e;
-    return arrlen + 1;
+
+    // see you, space cowboy
+    papierschnitt(n);
 }
 
 /*
     Wrapper function for the papierschnitt recursive call
 */
 void papierschnitt(int n) {
-    int arr[0];
-    papierschnitt_rec(n, n, arr, 0);
+    papierschnitt_rec(n, 0);
 }
 
 /*
-    A recursive function which prints all possible sequences of 2 and 1 so 
-    the sum of them results to n.
+    A recursive function which prints out all possible sequences of 2 and 1 so 
+    their sum equals n.
+    Uses a global variables.
 */
-void papierschnitt_rec(int n, int r, int seq[], int seqlen) {
-    if(r == 1 || r == 2) {
-        printf("%d = ", n);
-        for (int i = 0; i < seqlen; ++i) {
-            printf("%d + ", seq[i]);
+void papierschnitt_rec(int r, int seqlen) {
+    if (r == 0) {
+        // print out sequence
+        printf("%d = %d", n, sequence[0]);
+        for (int i = 1; i < seqlen; ++i) {
+            printf(" + %d", sequence[i]);
         }
-        printf("%d\n", r);
+        printf("\n");
 
-        // case 2
-        if(r == 2) {
-            int newarr[seqlen+1];
-            addElementToArray(seq, seqlen, 1, newarr);
-            papierschnitt_rec(n, 1, newarr, seqlen + 1);
-        }
+        return;
     }
-    else {
-        int newarr[seqlen+1];
-        // case 2
-        addElementToArray(seq, seqlen, 2, newarr);
-        papierschnitt_rec(n, r-2, newarr, seqlen + 1);
-        // case 1
-        addElementToArray(seq, seqlen, 1, newarr);
-        papierschnitt_rec(n, r-1, newarr, seqlen + 1);
+
+    // case: substract 2
+    if (r >= 2) {
+        sequence[seqlen] = 2;
+        papierschnitt_rec(r - 2, seqlen + 1);
     }
+
+    // case: substract 1
+    sequence[seqlen] = 1;
+    papierschnitt_rec(r - 1, seqlen + 1);
 }
