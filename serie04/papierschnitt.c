@@ -14,17 +14,12 @@ int main() {
     printf("n: "); scanf("%d", &n);
 
     // validate input
-    if (n <= 0 && n > MAXLEN) {
+    if (n <= 0 || n > MAXLEN) {
         printf("n must be between 1 and %d", MAXLEN);
         return 0;
     }
 
-    // init global array
-    for (int i = 0; i < MAXLEN; ++i) {
-        sequence[i] = 0;
-    }
-
-    // see you, space cowboy
+    // see you space cowboy
     papierschnitt(n);
 }
 
@@ -38,13 +33,14 @@ void papierschnitt(int n) {
 /*
     A recursive function which prints out all possible sequences of 2 and 1 so 
     their sum equals n.
-    Uses a global variables.
+    Uses global variables.
 */
 void papierschnitt_rec(int r, int seqlen) {
     if (r == 0) {
         // print out sequence
+        int i;
         printf("%d = %d", n, sequence[0]);
-        for (int i = 1; i < seqlen; ++i) {
+        for (i = 1; i < seqlen; ++i) {
             printf(" + %d", sequence[i]);
         }
         printf("\n");
