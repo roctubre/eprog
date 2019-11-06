@@ -7,14 +7,15 @@ int maxcompare(double a[N_SIZE], double b[N_SIZE]);
 int main() {
     double a[N_SIZE];
     double b[N_SIZE];
+    int i;
 
     // get input a
-    for (int i = 0; i < N_SIZE; ++i) {
+    for (i = 0; i < N_SIZE; ++i) {
         printf("a_%d: ", i);
         scanf("%lf", &a[i]);
     }
     // get input b
-    for (int i = 0; i < N_SIZE; ++i) {
+    for (i = 0; i < N_SIZE; ++i) {
         printf("b_%d: ", i);
         scanf("%lf", &b[i]);
     }
@@ -30,7 +31,7 @@ double max(double x[N_SIZE]) {
     double max = x[0];
     int i;
 
-    for(i = 0; i < N_SIZE; ++i) {
+    for(i = 1; i < N_SIZE; ++i) {
         if (x[i] > max) {
             max = x[i];
         }
