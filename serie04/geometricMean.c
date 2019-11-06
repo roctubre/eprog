@@ -19,9 +19,10 @@ double geometricMean(double x[]) {
 
 int main() {
     double x[N_SIZE];
+    int i;
 
     // get input
-    for (int i = 0; i < N_SIZE; ++i) {
+    for (i = 0; i < N_SIZE; ++i) {
         printf("x_%d: ", i); scanf("%lf", &x[i]);
         // validate
         if (x[i] < 0) {

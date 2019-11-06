@@ -27,7 +27,7 @@ int main() {
     Returns the maximum element of a vector
 */
 double max(double x[N_SIZE]) {
-    double max = 0;
+    double max = x[0];
     int i;
 
     for(i = 0; i < N_SIZE; ++i) {
@@ -41,7 +41,7 @@ double max(double x[N_SIZE]) {
 
 /*
     Returns the number of occurences in which the maximum element of vector a and b occur
-    in the same position. If the maximums of the vectors are differ, zero occurences are returned.
+    in the same position. If the maximums of the vectors are different, zero occurences are returned.
 */
 int maxcompare(double a[N_SIZE], double b[N_SIZE]) {
     double a_max = max(a);

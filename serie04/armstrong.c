@@ -36,12 +36,16 @@ void armstrong(int b, int c) {
 
     // loop through interval
     for (;n <= c; ++n) {
-        digits = (int)(log10(n) + 1);   
+        digits = ceil(log10(n));
         sum = 0;
+
+        // loop through digits
         for (i = 0; i <= digits; ++i) {
             nth = (int)(n / pow(10, i)) % 10;   
             sum += pow(nth, digits);
         }
+
+        // is armstrong number?
         if (sum == n) {
             printf("%d\n", n);
         }

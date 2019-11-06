@@ -31,10 +31,14 @@ int main() {
     1     1
 */
 void kreuz(int n) {
+    // loop variables
+    int i;
+    int j;
+
     // iterate through 2n - 1 lines
-    for (int i = 0; i < 2*n - 1; ++i) {
+    for (i = 0; i < 2*n - 1; ++i) {
         // iterate through characters (each line has 2n - 1 characters)
-        for (int j = 0; j < 2*n - 1; ++j) {
+        for (j = 0; j < 2*n - 1; ++j) {
             // print out the number or an empty character
             if(j == i || j == (2*n-1) - 1*(i+1)) {
                 if (i + 1 <= n) {   // first n lines

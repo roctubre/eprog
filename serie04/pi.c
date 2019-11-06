@@ -44,10 +44,13 @@ double leibnitz(int n, int type) {
 double leibnitz_loop(int n) {
     double sum = 0.;
     int sign = 1;
-    for (int k = 0; k <= n; ++k) {
+    int k;
+
+    for (k = 0; k <= n; ++k) {
         sign = k % 2 == 0 ? 1 : -1;
         sum += sign * (4. / (2.*k + 1.));
     }
+    
     return sum;
 }
 

@@ -19,7 +19,7 @@ int main() {
         return 0;
     }
 
-    // see you space cowboy
+    // function call
     papierschnitt(n);
 }
 
@@ -33,7 +33,7 @@ void papierschnitt(int n) {
 /*
     A recursive function which prints out all possible sequences of 2 and 1 so 
     their sum equals n.
-    Uses global variables.
+    Uses global variables n and sequence(MAXLEN).
 */
 void papierschnitt_rec(int r, int seqlen) {
     if (r == 0) {
