@@ -32,5 +32,5 @@ int main() {
     }
 
     // function call and output
-    printf("Geometric mean: %lf", geometricMean(x));
+    printf("Geometric mean: %lf\n", geometricMean(x));
 }

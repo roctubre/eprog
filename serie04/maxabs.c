@@ -15,7 +15,7 @@ int main() {
     }
 
     // function call and output
-    printf("maxabs(x) = %lf", maxabs(x));
+    printf("maxabs(x) = %lf\n", maxabs(x));
 }
 
 /*

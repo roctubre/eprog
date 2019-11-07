@@ -2,7 +2,8 @@
 
 #define N_SIZE 3
 
-int maxcompare(double a[N_SIZE], double b[N_SIZE]);
+double  max         (double x[N_SIZE]);
+int     maxcompare  (double a[N_SIZE], double b[N_SIZE]);
 
 int main() {
     double a[N_SIZE];
@@ -21,7 +22,7 @@ int main() {
     }
 
     // function call and output
-    printf("maxcompare(a, b) = %d", maxcompare(a, b));
+    printf("maxcompare(a, b) = %d\n", maxcompare(a, b));
 }
 
 /*

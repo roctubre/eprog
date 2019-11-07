@@ -15,7 +15,7 @@ int main() {
     }
 
     // function call and output
-    printf("e = %lf", energie(x));
+    printf("e = %lf\n", energie(x));
 }
 
 /*
