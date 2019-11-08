@@ -25,7 +25,7 @@ int main() {
     b_n := (a_(n+1))/a_n - a_n/(a_(n-1))
     a_0 := 1
     a_1 := 1
-    a_n := a_0 + a_1
+    a_n := a_(n-1) + a_(n-2)
 
     Testcases:
     k=1 => n=1
@@ -40,18 +40,18 @@ int cauchy(int k) {
 
     // initialize first three fibonacci elements
     double a_prev = 1;
-    double a_n = 1;
-    double a_next = a_prev + a_n;
+    double a = 1;
+    double a_next = a_prev + a;
 
-    double b_n = a_next/a_n - a_n/a_prev;   // b_n = 1
+    double b_n = a_next/a - a/a_prev;   // b_n = 1
     int n = 1;
 
     // loop until |b_n| <= 1/k
     while (fabs(b_n) > 1./k && !almosteq(b_n, 1./k)) {
-        a_prev = a_n;
-        a_n = a_next;
-        a_next = a_prev + a_n;
-        b_n = a_next/a_n - a_n/a_prev;
+        a_prev = a;
+        a = a_next;
+        a_next = a_prev + a;
+        b_n = a_next/a - a/a_prev;
         ++n;
     }
     
