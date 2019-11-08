@@ -30,7 +30,7 @@ int main() {
     Testcases:
     k=1 => n=1
     k=2 => n=2
-    k=6 => n=3  // double comparison
+    k=6 => n=3  // 1.66 == 1.66 double comparison
     k=7 => n=4
     k=1870 => n=9
     k=1871 => n=10
