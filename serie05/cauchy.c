@@ -9,7 +9,6 @@ int     almosteq    (double a, double b);
 
 int main() {
     int k = 0;
-    int b = 0;
 
     // get input
     printf("k: "); scanf("%d", &k);
@@ -55,6 +54,7 @@ int cauchy(int k) {
         b_n = a_next/a_n - a_n/a_prev;
         ++n;
     }
+    
     return n;
 }
 
