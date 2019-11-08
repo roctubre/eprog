@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include <assert.h>
 
 
@@ -11,13 +12,10 @@ int power(double r, double c) {
     assert(r > 1.);
     assert(c > 0.);
 
-    int n = 0;
-    double product = 1;
+    int n = 0;  // exponent
 
-    // count multiplications until product > c
-    for(;product <= c; n++) {
-        product *= r;
-    }
+    // increase exponent until r^n > c
+    for(; pow(r, n) <= c; ++n);
     
     return n;
 }
