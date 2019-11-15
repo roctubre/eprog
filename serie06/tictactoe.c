@@ -15,9 +15,9 @@ int main() {
 */
 void playTicTacToe() {
     // initialize variables
-    int playfield[3][3] = {{-1, -1, -1}, 
-                           {-1, -1, -1}, 
-                           {-1, -1, -1}};
+    int playfield[3][3] = {{0, 0, 0}, 
+                           {0, 0, 0}, 
+                           {0, 0, 0}};
     int info[3][3] = {{1, 2, 3}, 
                       {4, 5, 6}, 
                       {7, 8, 9}};
@@ -40,8 +40,8 @@ void playTicTacToe() {
         --choice;      // adjust to array index
 
         // validate choice and write to field
-        if (choice >= 0 && choice < 9 && playfield[choice/3][choice%3] == -1) {
-            playfield[choice/3][choice%3] = moves%2 == 0 ? 0 : 1;
+        if (choice >= 0 && choice < 9 && playfield[choice/3][choice%3] == 0) {
+            playfield[choice/3][choice%3] = moves%2 == 0 ? 1 : 2;
             ++moves;
 
             // print out playfield
@@ -79,18 +79,6 @@ void playTicTacToe() {
 */
 int checkState(int x[3][3]) {
     // check player 1 win conditions
-    if ((x[0][0] == 0 && x[0][1] == 0 && x[0][2] == 0) ||   // rows
-        (x[1][0] == 0 && x[1][1] == 0 && x[1][2] == 0) || 
-        (x[2][0] == 0 && x[2][1] == 0 && x[2][2] == 0) ||
-        (x[0][0] == 0 && x[1][0] == 0 && x[2][0] == 0) ||   // columns
-        (x[0][1] == 0 && x[1][1] == 0 && x[2][1] == 0) ||
-        (x[0][2] == 0 && x[1][2] == 0 && x[2][2] == 0) ||
-        (x[0][0] == 0 && x[1][1] == 0 && x[2][2] == 0) ||   // diagonals
-        (x[0][2] == 0 && x[1][1] == 0 && x[2][0] == 0)) {
-        return 1;
-    }
-
-    // check player 2 win conditions
     if ((x[0][0] == 1 && x[0][1] == 1 && x[0][2] == 1) ||   // rows
         (x[1][0] == 1 && x[1][1] == 1 && x[1][2] == 1) || 
         (x[2][0] == 1 && x[2][1] == 1 && x[2][2] == 1) ||
@@ -99,14 +87,26 @@ int checkState(int x[3][3]) {
         (x[0][2] == 1 && x[1][2] == 1 && x[2][2] == 1) ||
         (x[0][0] == 1 && x[1][1] == 1 && x[2][2] == 1) ||   // diagonals
         (x[0][2] == 1 && x[1][1] == 1 && x[2][0] == 1)) {
+        return 1;
+    }
+
+    // check player 2 win conditions
+    if ((x[0][0] == 2 && x[0][1] == 2 && x[0][2] == 2) ||   // rows
+        (x[1][0] == 2 && x[1][1] == 2 && x[1][2] == 2) || 
+        (x[2][0] == 2 && x[2][1] == 2 && x[2][2] == 2) ||
+        (x[0][0] == 2 && x[1][0] == 2 && x[2][0] == 2) ||   // columns
+        (x[0][1] == 2 && x[1][1] == 2 && x[2][1] == 2) ||
+        (x[0][2] == 2 && x[1][2] == 2 && x[2][2] == 2) ||
+        (x[0][0] == 2 && x[1][1] == 2 && x[2][2] == 2) ||   // diagonals
+        (x[0][2] == 2 && x[1][1] == 2 && x[2][0] == 2)) {
         return 2;
     }
 
-    // check if atleast field is still open
+    // check if atleast one field is still open
     int i, j;
     for(i = 0; i < 3; ++i) {
         for(j = 0; j < 3; ++j) {
-            if(x[i][j] == -1) {
+            if(x[i][j] == 0) {
                 return 0;
             }
         }
@@ -121,17 +121,17 @@ int checkState(int x[3][3]) {
 */
 void printTicTacToe(int x[3][3], int isPlay) {
     if(isPlay) {
-        printf(" %c │ %c │ %c\n", x[0][0] == 0 ? 'X' : x[0][0] == 1 ? 'O' : ' ', 
-                                  x[0][1] == 0 ? 'X' : x[0][1] == 1 ? 'O' : ' ', 
-                                  x[0][2] == 0 ? 'X' : x[0][2] == 1 ? 'O' : ' ');
+        printf(" %c │ %c │ %c\n", x[0][0] == 1 ? 'X' : x[0][0] == 2 ? 'O' : ' ', 
+                                  x[0][1] == 1 ? 'X' : x[0][1] == 2 ? 'O' : ' ', 
+                                  x[0][2] == 1 ? 'X' : x[0][2] == 2 ? 'O' : ' ');
         printf("───┼───┼───\n");
-        printf(" %c │ %c │ %c\n", x[1][0] == 0 ? 'X' : x[1][0] == 1 ? 'O' : ' ', 
-                                  x[1][1] == 0 ? 'X' : x[1][1] == 1 ? 'O' : ' ', 
-                                  x[1][2] == 0 ? 'X' : x[1][2] == 1 ? 'O' : ' ');
+        printf(" %c │ %c │ %c\n", x[1][0] == 1 ? 'X' : x[1][0] == 2 ? 'O' : ' ', 
+                                  x[1][1] == 1 ? 'X' : x[1][1] == 2 ? 'O' : ' ', 
+                                  x[1][2] == 1 ? 'X' : x[1][2] == 2 ? 'O' : ' ');
         printf("───┼───┼───\n");
-        printf(" %c │ %c │ %c\n", x[2][0] == 0 ? 'X' : x[2][0] == 1 ? 'O' : ' ', 
-                                  x[2][1] == 0 ? 'X' : x[2][1] == 1 ? 'O' : ' ', 
-                                  x[2][2] == 0 ? 'X' : x[2][2] == 1 ? 'O' : ' ');
+        printf(" %c │ %c │ %c\n", x[2][0] == 1 ? 'X' : x[2][0] == 2 ? 'O' : ' ', 
+                                  x[2][1] == 1 ? 'X' : x[2][1] == 2 ? 'O' : ' ', 
+                                  x[2][2] == 1 ? 'X' : x[2][2] == 2 ? 'O' : ' ');
     }
     else {
         printf(" %d │ %d │ %d\n", x[0][0], x[0][1], x[0][2]);
