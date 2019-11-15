@@ -49,7 +49,6 @@ double sinNew(double x, double epsilon) {
     double sum = sum_prev + -pow(x, 3) / 6; // second partialsum when k = 1
     
     while(fabs(sum - sum_prev)/fabs(sum) > epsilon && fabs(sum) > epsilon) {
-        printf("Approx.: %lf\n", sum);
         sum_prev = sum;
         sum += pow(-1, k) * pow(x, 2*k + 1) / factorial(2*k + 1);
         ++k;

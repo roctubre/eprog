@@ -30,7 +30,7 @@ int main() {
 
     // get input
     printf("x: "); scanf("%lf", &x);
-    printf("t: "); scanf("%lf", &tau);
+    printf("tau: "); scanf("%lf", &tau);
 
     // get root approximation and reference
     result = sqrtNew(x, tau);
