@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 #include <assert.h>
 
 int     checkSudoku    (int x[16]);
@@ -37,7 +36,7 @@ int main() {
     Checks the solution of a 4x4 Sudoku. 
     It goes through rows, columns and 2x2 blocks.
 */
-int checkSudoku(int x[]) {
+int checkSudoku(int x[16]) {
     int v[4];   // stores the 4 elements of each row, column and 2x2 block
     int i, j;
 
@@ -80,7 +79,7 @@ int checkSudoku(int x[]) {
 }
 
 /*
-    Checks if all numbers from 1 to 4 occur in a given vector with length 4.
+    Checks if given vector contains values 1-4, without repetition
 */
 int isValidSet(int v[4]) {
     int present[4] = {0, 0, 0, 0};  // helper array
@@ -99,7 +98,7 @@ int isValidSet(int v[4]) {
 /*
     Prints out the given Sudoku grid.
 */
-void printSudoku (int x[16]) {
+void printSudoku(int x[16]) {
     printf("╔═══╤═══╦═══╤═══╗\n");
     printf("║ %d │ %d ║ %d │ %d ║\n", x[0], x[1], x[2], x[3]);
     printf("╟───┼───╫───┼───╢\n");
