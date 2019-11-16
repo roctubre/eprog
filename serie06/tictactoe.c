@@ -21,7 +21,6 @@ void playTicTacToe() {
     int info[3][3] = {{1, 2, 3}, 
                       {4, 5, 6}, 
                       {7, 8, 9}};
-    int moves = 0;                  // move counter; max. 9 moves
     int choice = 0;                  // field chosen by player
     int result = 0;
 
@@ -32,8 +31,8 @@ void playTicTacToe() {
     printf("- Player 1 (X) - Player 2 (O)\n\n");
     printTicTacToe(info, 0);
 
-    // players take turns
-    while(moves < 9) {
+    // players take turns until there's a winner or draw
+    while(checkState(playfield) == 0) {
         // get player's choice
         printf("\nPlayer %d - choose field: ", moves%2 == 0 ? 1 : 2);
         scanf("%d", &choice);
@@ -47,9 +46,6 @@ void playTicTacToe() {
             // print out playfield
             printf("\n");
             printTicTacToe(playfield, 1);
-
-            // stop game if there's a winner or draw
-            if (checkState(playfield) != 0) break;
         }
         else {
             printf("\nInvalid field!\n");
