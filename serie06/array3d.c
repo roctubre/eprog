@@ -1,19 +1,15 @@
 /*
     Task:
-    Save a 3d-Array into a 1D array.
+    Save a 3d-Array columnwise into a 1D array.
 
     Let M, N, P be the three dimensions of an array,
     Let i, j, k be the indeces in their respective dimension of a specific element in the 3d array.
 
     Formula for the index (l) in the 1D array:
-    l = M*i + N*j + P*k
+    l = i + j*M + k*M*N = i + M*(j + N*k)
     
     Explanation:
-    We declase a 1D array with the size of M*N*P. 
-    Divide the 1D array into M blocks. Each M block contains N*P elements.
-    Divide each M block into N blocks. Each N block contains P elements.
-    Divide each N block into P blocks. Each P block is one element.
-    To get a specific element, we muliply the dimensions with the elements indeces from the 3D array.
+    Elements are saved depths-wise, then column wise in the 1D vector.
 */
 
 #include <stdio.h>
@@ -21,6 +17,8 @@
 #define M 3
 #define N 3
 #define P 3
+
+double frobeniusNorm(double x[], int m, int n, int p);
 
 /*
     Initializes the Levi-Civita symbol into a 1D array.
@@ -30,9 +28,9 @@ int main() {
     int i, j, k, l;
 
     for(i = 0; i < M; ++i) {
-        for(j = 0; j < M; ++j) {
-            for(k = 0; k < M; ++k) {
-                l = M*i + N*j + P*k;
+        for(j = 0; j < N; ++j) {
+            for(k = 0; k < P; ++k) {
+                l = i + j*M + k*M*N;
                 if((i == 0 && j == 1 && k == 2) ||
                    (i == 1 && j == 2 && k == 0) ||
                    (i == 2 && j == 0 && k == 1)) {
@@ -51,4 +49,26 @@ int main() {
             }
         }
     }
+}
+
+/*
+    Calculates the frobenius norm of an array with dimensions M*N*P.
+    The array is given as a 1D vector array. Time complexity is O(M*N*P).
+
+    Complexity assumption: 
+    Given an N^3 array, with N = 10^2 and a resultung runtime of 1 second, 
+    calculate the runtime with N = 10^3.
+    
+    With N = 10^3, one must divide (10^3)^3 with (10^2)^3. 
+    The resulting runtime is 1000 seconds (16 min 40 s).
+*/
+double frobeniusNorm(double x[], int m, int n, int p) {
+    double sum = 0;
+    int i;
+
+    for (i = 0; i < m*n*p; ++i) {
+        sum += x[i] * x[i];
+    }
+    
+    return sum;
 }
