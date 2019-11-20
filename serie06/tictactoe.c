@@ -21,6 +21,7 @@ void playTicTacToe() {
     int info[3][3] = {{1, 2, 3}, 
                       {4, 5, 6}, 
                       {7, 8, 9}};
+    int moves = 0;
     int choice = 0;                  // field chosen by player
     int result = 0;
 
@@ -34,7 +35,7 @@ void playTicTacToe() {
     // players take turns until there's a winner or draw
     while(checkState(playfield) == 0) {
         // get player's choice
-        printf("\nPlayer %d - choose field: ", moves%2 == 0 ? 1 : 2);
+        printf("\nPlayer %d - choose field: ", (moves%2 == 0 ? 1 : 2));
         scanf("%d", &choice);
         --choice;      // adjust to array index
 
