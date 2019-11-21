@@ -70,6 +70,7 @@ double delta(double a[N*N]) {
     double levi[N*N*N];
     initLeviCivita(levi);
 
+    // calculate delta according to given formula
     for(i = 0; i < N; ++i) {
         for(j = 0; j < N; ++j) {
             for(k = 0; k < N; ++k) {
