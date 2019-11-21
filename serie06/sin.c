@@ -55,10 +55,13 @@ double sinNew(double x, double epsilon) {
     int i;
 
     while(fabs(sum - sum_prev)/fabs(sum) > epsilon && fabs(sum) > epsilon) {
-        // calculate term, avoid factorial by dividing manually
-        term = pow(-1, k) * pow(x, 2*k + 1);
+        // determine sign of term
+        term = k % 2 == 0 ? 1 : -1; 
+
+        // calculate term; split into multiple factors to avoid double overflow
+        // e.g.: (x^100)/(100!) = (x/100)*(x/99)* ... *(x/1)
         for(i = (2*k + 1); i > 0; --i) {
-            term /= i;
+            term *= x / i;
         }
 
         // update partial sums
