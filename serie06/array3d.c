@@ -56,10 +56,10 @@ int main() {
     The array is given as a 1D vector array. Time complexity is O(M*N*P).
 
     Complexity assumption: 
-    Given an N^3 array, with N = 10^2 and a resultung runtime of 1 second, 
+    Given an N^3 array, with N = 10^2 and a resulting runtime of 1 second, 
     calculate the runtime with N = 10^3.
     
-    With N = 10^3, one must divide (10^3)^3 with (10^2)^3. 
+    With N = 10^3, one must divide (10^3)^3 by (10^2)^3 = 10^3.
     The resulting runtime is 1000 seconds (16 min 40 s).
 */
 double frobeniusNorm(double x[], int m, int n, int p) {
@@ -70,5 +70,5 @@ double frobeniusNorm(double x[], int m, int n, int p) {
         sum += x[i] * x[i];
     }
     
-    return sum;
+    return sqrt(sum);
 }

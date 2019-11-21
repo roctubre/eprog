@@ -36,7 +36,6 @@ void whichProduct(double a[N], double b[N], double c[N]) {
     for(i = 0; i < N; ++i) {
         for(j = 0; j < N; ++j) {
             for(k = 0; k < N; ++k) {
-                printf("%lf += %lf * %lf * %lf\n", c[i], levi[i + j*N + k*N*N], a[j], b[k]);
                 c[i] += levi[i + j*N + k*N*N] * a[j] * b[k];
             }
         }
