@@ -4,7 +4,7 @@
 
 double* scanVector(int length);
 void printVector(double* vector, int length);
-void insertionSort(double *x, int n);
+void bubbleSort(double *x, int n);
 
 
 int main() {
@@ -20,7 +20,7 @@ int main() {
 
     // print and sort vector
     printVector(v, n);      // before
-    insertionSort(v, n);
+    bubbleSort(v, n);
     printVector(v, n);      // after
 
     // cleanup
@@ -62,34 +62,34 @@ void printVector(double* vector, int length) {
 }
 
 /*
-    Sorts the given vector using the insertion sort algorithm.
+    Sorts the given vector using the bubble sort algorithm.
 
     Complexity:
-    - Depends on comparison and swap count
-    - Best case: O(n) if already sorted
-        * scans through unsorted part n-1 times => O(n)
-        * no swaps necessary
+    - O(n^2) because it always performs the full number of comparisons. See worst case.
+    - Best case with break condition: O(n) if already sorted
+        * scans through vector once => n-1 times => O(n)
+        * if no break condition, see worst case
     - Worst case: O(n^2) if in decreasing order
-        * scans through unsorted part n-1 times => O(n)
+        * comparisons = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 (gauss sumformula) => O(n^2)
         * swaps = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 (gauss sumformula) => O(n^2)
-        * O(n + n^2) => O(n^2) 
+        * O(n^2 + n^2) => O(n^2) 
 */
-void insertionSort(double* x, int n) {
-    assert(n > 1);
-    
-    double s;           // holds first element in sorted part
-    int unsorted_idx;   // index of unsorted vector
-    int k;              // loop-variable which goes through the sorted vector backwards
-    
-    // loop through the unsorted part
-    for (unsorted_idx = 1; unsorted_idx < n; ++unsorted_idx) {
-        s = x[unsorted_idx];    // hold first element of unsorted part
+void bubbleSort(double* x, int n) {
+    int last_idx;
+    int changes;
+    int j;
 
-        // starting from the last element in the sorted part, 
-        // shift to the right until condition is reached
-        for (k = unsorted_idx - 1; k >= 0 && x[k] > s; --k) {
-            x[k + 1] = x[k];
+    for (last_idx = n - 1; last_idx > 0; --last_idx) {
+        changes = 0;
+        for (j = 0; j < last_idx; ++j) {
+            if (x[j] > x[j + 1]) {          // swap values
+                x[j] = x[j] + x[j + 1];
+                x[j+1] = x[j] - x[j+1];
+                x[j] = x[j] - x[j+1];
+                changes = 1;                // change occured
+            }
         }
-        x[k + 1] = s;
+
+        if (!changes) break;                // break if no changes
     }
 }
