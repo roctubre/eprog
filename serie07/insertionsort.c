@@ -4,7 +4,7 @@
 
 double* scanVector(int length);
 void printVector(double* vector, int length);
-void selectionsSort(double* x, int n);
+void insertionSort(double *x, int n);
 
 
 int main() {
@@ -20,7 +20,7 @@ int main() {
 
     // print and sort vector
     printVector(v, n);      // before
-    selectionsSort(v, n);
+    insertionSort(v, n);
     printVector(v, n);      // after
 
     // cleanup
@@ -62,29 +62,28 @@ void printVector(double* vector, int length) {
 }
 
 /*
-    Sorts a given vector with the Minsort-Algorithm from the lecture (page 77).
+    Sorts the given vector by splitting it into a sorted and unsorted part.
+
+    Implementation: 
+    Uses an index variable to keep track of the start of the unsorted part.
 */
-void selectionsSort(double* x, int n) {
-    int i, j, min_idx;
-    double min = 0;
-    assert(n > 0);
+void insertionSort(double* x, int n) {
+    assert(n > 1);
     
-    for (i = 0; i < n; ++i) {
-        min = x[i];
-        min_idx = i;
+    int unsorted_idx;   // index of unsorted vector
+    int k;              // loop-variable which goes through the sorted vector backwards
+    
+    // loop through the unsorted part
+    for (unsorted_idx = 1; unsorted_idx < n; ++unsorted_idx) {
+        // loop backwards the sorted part
+        // keep swapping k-th and (k-1)-th elements until k > k-1 or k == 0
+        for (k = unsorted_idx; k > 0; --k) {
+            if (x[k] > x[k-1]) break;
 
-        // find minimum from x[i+1] to x[n-1]
-        for (j = i + 1; j < n; ++j) {
-            if (x[j] < min) {
-                min_idx = j;
-            }
-        }
-
-        // swap elements
-        if (min_idx != i) {
-            x[i] = x[i] + x[min_idx];
-            x[min_idx] = x[i] - x[min_idx];
-            x[i] = x[i] - x[min_idx];
+            // swap elements
+            x[k] = x[k] + x[k-1];
+            x[k-1] = x[k] - x[k-1];
+            x[k] = x[k] - x[k-1];
         }
     }
 }
