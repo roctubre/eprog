@@ -4,7 +4,7 @@
 
 double* scanVector(int length);
 void printVector(double* vector, int length);
-void selectionsSort(double* x, int n);
+void selectionSort(double* x, int n);
 
 
 int main() {
@@ -20,7 +20,7 @@ int main() {
 
     // print and sort vector
     printVector(v, n);      // before
-    selectionsSort(v, n);
+    selectionSort(v, n);
     printVector(v, n);      // after
 
     // cleanup
@@ -76,7 +76,7 @@ void printVector(double* vector, int length) {
         * accumulated comparisons (inner loop) = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 => O(n^2)
         * O(n) + O(n^2) = O(n^2)
 */
-void selectionsSort(double* x, int n) {
+void selectionSort(double* x, int n) {
     int i, j, min_idx;
     double min = 0;
     assert(n > 0);
