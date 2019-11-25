@@ -62,7 +62,19 @@ void printVector(double* vector, int length) {
 }
 
 /*
-    Sorts a given vector with the Minsort-Algorithm from the lecture (page 77).
+    Sorts a given vector using the Minsort-Algorithm from the lecture (page 77).
+
+    Complexity:
+    - O(n^2) for all cases
+    - Best case:
+        * scans vector n-times (outer loop) => O(n)
+        * accumulated comparisons (inner loop) = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 => O(n^2)
+        * no swaps
+        * O(n) + O(n^2) => O(n^2)
+    - Worst case:
+        * scans vector n-times (outer loop) = O(n)
+        * accumulated comparisons (inner loop) = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 => O(n^2)
+        * O(n) + O(n^2) = O(n^2)
 */
 void selectionsSort(double* x, int n) {
     int i, j, min_idx;

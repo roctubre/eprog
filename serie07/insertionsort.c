@@ -65,14 +65,11 @@ void printVector(double* vector, int length) {
     Sorts the given vector using the insertion sort algorithm.
 
     Complexity:
-    - Depends on comparison and swap count
     - Best case: O(n) if already sorted
         * scans through unsorted part n-1 times => O(n)
         * no swaps necessary
     - Worst case: O(n^2) if in decreasing order
-        * scans through unsorted part n-1 times => O(n)
-        * swaps = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 (gauss sumformula) => O(n^2)
-        * O(n + n^2) => O(n^2) 
+        * accumulated swaps = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 => O(n^2)
 */
 void insertionSort(double* x, int n) {
     assert(n > 1);

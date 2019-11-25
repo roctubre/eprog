@@ -66,13 +66,13 @@ void printVector(double* vector, int length) {
 
     Complexity:
     - O(n^2) because it always performs the full number of comparisons. See worst case.
-    - Best case with break condition: O(n) if already sorted
-        * scans through vector once => n-1 times => O(n)
-        * if no break condition, see worst case
+    - Best case *WITH* break condition: O(n) if already sorted
+        * compares once n-1 times => O(n)
+        * no swaps
     - Worst case: O(n^2) if in decreasing order
-        * comparisons = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 (gauss sumformula) => O(n^2)
-        * swaps = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 (gauss sumformula) => O(n^2)
-        * O(n^2 + n^2) => O(n^2) 
+        * accumulated comparisons (inner loop) = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 => O(n^2)
+        * accumulated swaps = (n-1) + (n-2) + ... + 2 + 1 <=> n(n-1)/2 => O(n^2)
+        * O(n^2) + O(n^2) => O(n^2) 
 */
 void bubbleSort(double* x, int n) {
     int last_idx;
