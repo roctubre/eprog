@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -100,7 +101,7 @@ void merge(double* a, int a_len, double* b, int b_len, double* x, int* x_len) {
         i++;
     }
 
-    // append remaining unique elements into temporary vector, if any
+    // append remaining unique elements into sorted vector, if any
     for (; l < a_len; ++l) {
         if (x[i-1] < a[l]) {
             x[i++] = a[l];
