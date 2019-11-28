@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -78,16 +79,14 @@ void printVector(double* vector, int length) {
 */
 void selectionSort(double* x, int n) {
     int i, j, min_idx;
-    double min = 0;
     assert(n > 0);
     
     for (i = 0; i < n; ++i) {
-        min = x[i];
         min_idx = i;
 
         // find minimum from x[i+1] to x[n-1]
         for (j = i + 1; j < n; ++j) {
-            if (x[j] < min) {
+            if (x[j] < x[min_idx]) {
                 min_idx = j;
             }
         }

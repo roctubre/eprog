@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -64,8 +65,7 @@ void printVector(double* vector, int length) {
 /*
     Sorts the given vector using the bubble sort algorithm.
 
-    Complexity:
-    - O(n^2) because it always performs the full number of comparisons. See worst case.
+    Complexity: O(n^2), full number of comparisons
     - Best case *WITH* break condition: O(n) if already sorted
         * compares once n-1 times => O(n)
         * no swaps

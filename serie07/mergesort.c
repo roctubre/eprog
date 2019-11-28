@@ -66,7 +66,7 @@ void printVector(double* vector, int length) {
     Sorts a given vector using the mergesort algorithm.
     Implemented using a recursive approach.
 
-    Complexity (Worst Case): O(n*log(n))
+    Complexity: O(n*log(n))
     - n = number of elements, l = level of recursion
     - vector is split on every call -> number of recursion levels (depth) = log2(n)
     - each recursion level has 2^l mergeSort calls, and each call has n/(2^l) merges

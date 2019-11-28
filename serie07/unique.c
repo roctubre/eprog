@@ -5,8 +5,7 @@
 
 double* scanVector      (int length);
 void    printVector     (double* vector, int length);
-double* subVector       (double* x, int length, int cpystart, int cpylength);
-void    merge           (double* a, int a_len, double* b, int b_len, double* x, int* x_len);
+void    merge           (double* left, int left_len, double* right, int right_len, double* x, int* x_len);
 void    mergeSort       (double* x, int* len);
 void    unique          (double* x, int* n);
 
@@ -67,21 +66,6 @@ void printVector(double* vector, int length) {
     printf("}\n");
 }
 
-/*
-     Copies a part of a given vector into another memory and returns a pointer to it.
-*/
-double* subVector(double* x, int length, int cpystart, int cpylength) {
-    assert(cpystart + cpystart <= length);
-
-    double* vector = malloc(cpylength*sizeof(double));
-    int i;
-
-    for (i = 0; i < cpylength; ++i) {
-        vector[i] = x[cpystart + i];
-    }
-
-    return vector;
-}
 
 /*
     Merges two sorted vectors into one sorted vector with unique elements.
@@ -126,6 +110,13 @@ void merge(double* left, int left_len, double* right, int right_len, double* x, 
 /*
     Sorts a given vector using the mergesort algorithm.
     Implemented using a recursive approach.
+
+    Complexity: O(n*log(n))
+    - n = number of elements, l = level of recursion
+    - vector is split on every call -> number of recursion levels (depth) = log2(n)
+    - each recursion level has 2^l mergeSort calls, and each call has n/(2^l) merges
+    - since on each level (2^l)*(n/(2^l)) = n merges occur and merging is linear => O(n) per level
+    - recursion levels times O(n) = log2(n) * O(n) => O(n*log(n))
 */
 void mergeSort(double* x, int* len) {
     if(*len == 2) {
