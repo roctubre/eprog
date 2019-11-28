@@ -86,31 +86,38 @@ double* subVector(double* x, int length, int cpystart, int cpylength) {
 /*
     Merges two sorted vectors into one sorted vector with unique elements.
 */
-void merge(double* a, int a_len, double* b, int b_len, double* x, int* x_len) {
-    int l = 0;      // loop variable for left vector
-    int r = 0;      // loop variable for right vector
-    int i = 0;      // tracks length of vector with unique elements
+void merge(double* left, int left_len, double* right, int right_len, double* x, int* x_len) {
+
+    double* merged = malloc((left_len + right_len)*sizeof(double));    // helper vector to merge left and right subvectors
+    int l = 0;                                                  // loop variable for left vector
+    int r = 0;                                                  // loop variable for right vector
+    int i = 0;                                                  // tracks length of vector with unique elements
 
     // merge left and right into sorted vector
-    while (l < a_len && r < b_len) {
-        x[i] = a[l] < b[r] ? a[l++] : b[r++]; 
+    while (l < left_len && r < right_len) {
+        merged[i] = left[l] < right[r] ? left[l++] : right[r++]; 
 
-        for (;a[l] <= x[i] && l < a_len; ++l);  // increase left index until unique element
-        for (;b[r] <= x[i] && r < b_len; ++r);  // increase right index until unique element  
+        for (;left[l] <= merged[i] && l < left_len; ++l);  // increase left index until unique element
+        for (;right[r] <= merged[i] && r < right_len; ++r);  // increase right index until unique element  
 
         i++;
     }
 
     // append remaining unique elements into sorted vector, if any
-    for (; l < a_len; ++l) {
-        if (x[i-1] < a[l]) {
-            x[i++] = a[l];
+    for (; l < left_len; ++l) {
+        if (merged[i-1] < left[l]) {
+            merged[i++] = left[l];
         }
     }
-    for (; r < b_len; ++r) {
-        if (x[i-1] < b[r]) {
-            x[i++] = b[r];
+    for (; r < right_len; ++r) {
+        if (merged[i-1] < right[r]) {
+            merged[i++] = right[r];
         }
+    }
+
+    // put merged vector into original vector
+    for(l = 0; l < i; ++l) {
+        x[l] = merged[l];
     }
 
     *x_len = i;     // new length of vector with unique elements
@@ -122,24 +129,21 @@ void merge(double* a, int a_len, double* b, int b_len, double* x, int* x_len) {
 */
 void mergeSort(double* x, int* len) {
     if(*len == 2) {
-        if(x[0] > x[1]) {
-            //swap
+        if(x[0] > x[1]) {       //swap
             x[0] = x[0] + x[1];
             x[1] = x[0] - x[1];
             x[0] = x[0] - x[1];
         }
     }
     else if (*len > 2){
-        int left_start = 0;                             // starting index of the left subvector
         int* left_len = malloc(sizeof(int)); 
         *left_len = *len / 2;                            // length of the left subvector
-        int right_start = left_start + *left_len;        // starting index of the right subvector
         int* right_len = malloc(sizeof(int)); 
         *right_len = *len - *left_len;                   // length of the right subvector
 
         // create sub vectors
-        double* left = subVector(x, *len, left_start, *left_len);
-        double* right = subVector(x, *len, right_start, *right_len);
+        double* left = x;
+        double* right = x + *left_len;
 
         // split vector and left and right and apply mergeSort
         mergeSort(left, left_len);
@@ -149,8 +153,6 @@ void mergeSort(double* x, int* len) {
         merge(left, *left_len, right, *right_len, x, len);
 
         // cleanup
-        free(left);
-        free(right);
         free(left_len);
         free(right_len);
         left = NULL;

@@ -1,10 +1,11 @@
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 
 double* scanVector(int length);
 void printVector(double* vector, int length);
-void mergeSort(double *x, int start, int len);
+void mergeSort(double *x, int len);
 
 
 int main() {
@@ -20,7 +21,7 @@ int main() {
 
     // print and sort vector
     printVector(v, n);      // before
-    mergeSort(v, 0, n);
+    mergeSort(v, n);
     printVector(v, n);      // after
 
     // cleanup
@@ -61,7 +62,6 @@ void printVector(double* vector, int length) {
     printf("}\n");
 }
 
-
 /*
     Sorts a given vector using the mergesort algorithm.
     Implemented using a recursive approach.
@@ -73,48 +73,48 @@ void printVector(double* vector, int length) {
     - since on each level (2^l)*(n/(2^l)) = n merges occur and merging is linear => O(n) per level
     - recursion levels times O(n) = log2(n) * O(n) => O(n*log(n))
 */
-void mergeSort(double* x, int start, int len) {
+void mergeSort(double* x, int len) {
     if(len == 2) {
-        if(x[start] > x[start + 1]) {
+        if(x[0] > x[1]) {
             //swap
-            x[start] = x[start] + x[start + 1];
-            x[start + 1] = x[start] - x[start + 1];
-            x[start] = x[start] - x[start + 1];
+            x[0] = x[0] + x[1];
+            x[1] = x[0] - x[1];
+            x[0] = x[0] - x[1];
         }
     }
     else if (len > 2){
-        int left_start = start;                         // starting index of the left subvector
+        double *left_ptr = x;                           // pointer to left subvector
         int left_len = len / 2;                         // length of the left subvector
-        int right_start = left_start + left_len;        // starting index of the right subvector
+        double *right_ptr = x + left_len;               // pointer to right subvector
         int right_len = len - left_len;                 // length of the right subvector
         int l, r, i;                                    // loop variables
 
-        double* sorted = malloc(len*sizeof(double));    // helper vector to sort left and right subvectors
+        double* sorted = malloc(len*sizeof(double));    // helper vector to merge left and right subvectors
 
         // split vector and left and right and apply mergeSort
-        mergeSort(x, left_start, left_len);
-        mergeSort(x, right_start, right_len);
+        mergeSort(left_ptr, left_len);
+        mergeSort(right_ptr, right_len);
 
-        l = left_start;
-        r = right_start;
+        l = 0;
+        r = 0;
         i = 0;
 
         // merge left and right into temporary vector
-        while (l < left_start + left_len && r < right_start + right_len) {
-            sorted[i++] = x[l] < x[r] ? x[l++] : x[r++];
+        while (l < left_len && r < right_len) {
+            sorted[i++] = left_ptr[l] < right_ptr[r] ? left_ptr[l++] : right_ptr[r++];
         }
 
         // append remaining elements into temporary vector, if any
-        while (l < left_start + left_len) {
-            sorted[i++] = x[l++];
+        while (l < left_len) {
+            sorted[i++] = left_ptr[l++];
         }
-        while (r < right_start + right_len) {
-            sorted[i++] = x[r++];
+        while (r < right_len) {
+            sorted[i++] = right_ptr[r++];
         }
 
         // put sorted vector into original array
         for(i = 0; i < len; ++i) {
-            x[start + i] = sorted[i];
+            x[i] = sorted[i];
         }
 
         // cleanup
