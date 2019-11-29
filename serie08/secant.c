@@ -4,8 +4,8 @@
 #include <assert.h>
 #include <math.h>
 
-double  secant      (double (*f)(double), double x0, double x1, double tau);    // calculate an x-intercept
-double  f           (double x);                                                 // arbitrary continuous function
+double  secant  (double (*f)(double), double x0, double x1, double tau);    // calculate an x-intercept
+double  f       (double x);                                                 // arbitrary differentiable function
 
 
 int main() {
@@ -14,7 +14,7 @@ int main() {
     double tau = 0.0001;
 
     double result = secant(&f, x0, x1, tau);
-    printf("Result: %lf\n", result);
+    printf("Approximation: %lf\n", result);
 }
 
 
@@ -22,13 +22,15 @@ int main() {
     Calculates a x-intercept of a function using the secant method.
 */
 double secant(double (*f)(double), double x0, double x1, double tau) {
-    double xn = x1 - f(x1)*((x0-x1)/(f(x0) - f(x1)));
+    assert(tau > 0);
 
-    while (fabs(f(xn)-f(x1)) > tau && 
-          (fabs(f(xn)) > tau || (fabs(xn - x1) > (fabs(xn) <= tau ? tau : tau*fabs(xn))))) {
-        x0 = x1;
-        x1 = xn;
-        xn = x1 - f(x1)*((x0-x1)/(f(x0) - f(x1)));
+    double xn = x1 - f(x1)*((x0-x1)/(f(x0) - f(x1)));       // x_2
+
+    while (!(fabs(f(xn)-f(x1)) <= tau ||                                                           // first or
+          (fabs(f(xn)) <= tau && (fabs(xn - x1) <= (fabs(xn) <= tau ? tau : tau*fabs(xn)))))) {    // second condition
+        x0 = x1;                                    // x_(n-2)
+        x1 = xn;                                    // x_(n-1)
+        xn = x1 - f(x1)*((x0-x1)/(f(x0) - f(x1)));  // x_(n)
     }
 
     if (fabs(f(xn)-f(x1)) <= tau) {
@@ -40,7 +42,7 @@ double secant(double (*f)(double), double x0, double x1, double tau) {
 
 
 /*
-    An arbitrary continuous function to test the secant method.
+    An arbitrary differentiable function to test the secant method.
 */
 double f(double x) {
     return pow(x, 2) + 3*x + 1;      // triggers second condition of secant method
