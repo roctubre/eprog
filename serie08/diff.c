@@ -45,7 +45,7 @@ double diff(double (*f)(double), double x, double h0, double tau) {
     double phi_n = (f(x + h_n) - f(x)) / h_n;   // Phi(h_(n))
     double phi_m = (f(x + h_m) - f(x)) / h_m;   // Phi(h_(n+1))
 
-    while (!(fabs(phi_n - phi_m) <= (fabs(phi_n <= tau ? tau : tau*fabs(phi_n))))) {
+    while (!(fabs(phi_n - phi_m) <= (fabs(phi_n) <= tau ? tau : tau*fabs(phi_n)))) {
         h_n = h_m;
         h_m = pow(2, -(++n)) * h0;
         phi_n = phi_m;
