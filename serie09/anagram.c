@@ -8,6 +8,7 @@
 
 int     anagram     (char* firstStr, char* secondStr);
 void    quickSort   (char* x, int n);
+void    tolower     (char* str);
 
 
 int main() {
@@ -31,7 +32,11 @@ int main() {
     Returns 1 if anagram, else 0.
 */
 int anagram(char* firstStr, char* secondStr) {
-    // sort characters arrays
+    // change strings to lower-case
+    tolower(firstStr);
+    tolower(secondStr);
+
+    // sort character arrays
     quickSort(firstStr, strlen(firstStr));
     quickSort(secondStr, strlen(secondStr));
 
@@ -70,4 +75,16 @@ void quickSort(char* x, int n) {
 
     quickSort(x, j++);          // sort lesser part
     quickSort(x + j, n - j);    // sort greater part; x + j is a pointer to the first greater element
+}
+
+/*
+    Changes all upper-case characters to lower-case.
+*/
+void tolower(char* str) {
+    int i;
+    for (i = 0; i < strlen(str); ++i) {
+        if (str[i] >= 65 && str[i] <= 90) {
+            str[i] += 32;
+        }
+    }
 }
