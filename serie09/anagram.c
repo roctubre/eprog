@@ -4,20 +4,28 @@
 #include <assert.h>
 #include <string.h>
 
-#define MAXLEN 256
+#define MAXLEN 1028
 
 int     anagram     (char* firstStr, char* secondStr);
 void    quickSort   (char* x, int n);
-void    tolower     (char* str);
+void    toLower     (char* str);
 
 
 int main() {
-    char str1[MAXLEN];
-    char str2[MAXLEN];
+    char *str1 = malloc(MAXLEN*sizeof(char));
+    char *str2 = malloc(MAXLEN*sizeof(char));
 
-    printf("String 1: "); scanf("%s", str1);
-    printf("String 2: "); scanf("%s", str2);
+    // get input
+    printf("String 1: "); 
+    scanf("%s", str1);
+    printf("String 2: "); 
+    scanf("%s", str2);
 
+    // resize char array
+    realloc(str1, strlen(str1) + 1);
+    realloc(str2, strlen(str2) + 1);
+
+    // check if anagram and output result
     if (anagram(str1, str2) == 1) {
         printf("Strings are anagrams of each other.");
     }
@@ -33,10 +41,10 @@ int main() {
 */
 int anagram(char* firstStr, char* secondStr) {
     // change strings to lower-case
-    tolower(firstStr);
-    tolower(secondStr);
+    toLower(firstStr);
+    toLower(secondStr);
 
-    // sort character arrays
+    // sort char arrays
     quickSort(firstStr, strlen(firstStr));
     quickSort(secondStr, strlen(secondStr));
 
@@ -79,8 +87,12 @@ void quickSort(char* x, int n) {
 
 /*
     Changes all upper-case characters to lower-case.
+
+    ASCII table info:
+    A - Z: 65 - 90
+    a - z: 97 - 122
 */
-void tolower(char* str) {
+void toLower(char* str) {
     int i;
     for (i = 0; i < strlen(str); ++i) {
         if (str[i] >= 65 && str[i] <= 90) {
