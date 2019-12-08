@@ -6,10 +6,10 @@
 
 #define MAXLEN 256
 
-int anagram(char* firstStr, char* secondStr);
-int* char2int(char* input, int length);
-char* int2char(int* input, int length);
-void quickSort(int* x, int n);
+int     anagram     (char* firstStr, char* secondStr);
+int*    char2int    (char* input, int length);
+char*   int2char    (int* input, int length);
+void    quickSort   (int* x, int n);
 
 
 int main() {
@@ -27,6 +27,7 @@ int main() {
     }
 }
 
+
 /*
     Determines whether a string is an anagram of another string.
     Returns 1 if anagram, else 0.
@@ -34,13 +35,13 @@ int main() {
 int anagram(char* firstStr, char* secondStr) {
     int len1 = strlen(firstStr);                        // length of firstStr
     int len2 = strlen(secondStr);                       // length of secondStr
-    int* int_firstStr = char2int(firstStr, len1);       // convert firstStr to ASCII representation
-    int* int_secondStr = char2int(secondStr, len2);     // convert secondStr to ASCII representation
+    int* int_firstStr = char2int(firstStr, len1);       // convert firstStr to decimal ASCII representation
+    int* int_secondStr = char2int(secondStr, len2);     // convert secondStr to decimal ASCII representation
     char* sorted_firstStr = NULL;                       // sorted characters of firstStr
     char* sorted_secondStr = NULL;                      // sorted characters of secondStr
     int result = 0;                                     // 0 = TRUE, else FALSE
 
-    // sort ascii arrays
+    // sort int arrays
     quickSort(int_firstStr, len1);
     quickSort(int_secondStr, len2);
     
@@ -66,16 +67,6 @@ int anagram(char* firstStr, char* secondStr) {
     return result == 0 ? 1 : 0;
 }
 
-void printIntArray(int* array, int length) {
-    assert(length > 0);
-    int i;
-    printf("{%d", array[0]);
-    for (i = 1; i < length; ++i) {
-        printf(", %d", array[i]);
-    }
-    printf("}\n");
-}
-
 
 /*
     Creates an integer array from a character array.
@@ -95,6 +86,7 @@ int* char2int(char* input, int length) {
 
     return output;
 }
+
 
 /*
     Creates a character array from an integer array.
