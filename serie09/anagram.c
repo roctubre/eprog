@@ -31,20 +31,14 @@ int main() {
     Returns 1 if anagram, else 0.
 */
 int anagram(char* firstStr, char* secondStr) {
-    int len1 = strlen(firstStr);    // length of firstStr
-    int len2 = strlen(secondStr);   // length of secondStr
-    int result = 0;                 // 0 = TRUE, else FALSE
-
-    // sort char arrays
+    // sort characters arrays
     quickSort(firstStr, strlen(firstStr));
     quickSort(secondStr, strlen(secondStr));
 
-    // compare sorted strings using strcmp from string.h
-    result = strcmp(firstStr, secondStr);
-
-    // strcmp returns 0 if strings are equal, but according to the task 
+    // compare sorted strings using strcmp() from string.h
+    // strcmp() returns 0 if strings are equal, but according to the task 
     // we have to return 1 if they are anagrams of each other.
-    return result == 0 ? 1 : 0;
+    return strcmp(firstStr, secondStr) == 0 ? 1 : 0;
 }
 
 
