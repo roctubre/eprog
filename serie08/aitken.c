@@ -61,6 +61,6 @@ double* sequence(int length) {
 */
 double f(int x) {
     //return (3*pow(x, 2)) / (pow(x, 2) + 1);   // converges to 3
-    //return pow(0.9, x);                       // q^n; if q < 1 then series converges to 0
-    return pow(1. + 1./x, x);                   // converges to Euler's number
+    return pow(0.9, x);                       // q^n; if q < 1 then series converges to 0
+    //return pow(1. + 1./x, x);                   // converges to Euler's number
 }

@@ -25,7 +25,7 @@ int main() {
 */
 double diffaitken(double (*fct)(double), double x, double h0, double tau) {
     assert(tau > 0 && h0 > 0);
-
+    
     int n = 1;
     double h_n = pow(2, -n) * h0;               // h_(n)
     double h_m = pow(2, -(++n)) * h0;           // h_(n+1)
@@ -48,8 +48,8 @@ double diffaitken(double (*fct)(double), double x, double h0, double tau) {
 
         printf("h_(n+1): %lf, |y_(n) - y_(n+1)|: %0.12lf, y_(n+1): %lf\n", h_m, fabs(y_n - y_m), y_n);
     }
-
-    return y_n;
+    
+    return y_m;
 }
 
 

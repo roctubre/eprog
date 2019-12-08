@@ -22,7 +22,7 @@ int main() {
 
 
 /*
-    Output the derivatives (slopes) from x-3 to x+3 for test purpose.
+    Output the derivatives (slopes) from x-3 to x+3 for testing purpose.
 */
 double test(double x, double h0, double tau) {
     double k;

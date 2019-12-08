@@ -21,8 +21,8 @@ int main(){
 */
 double neville(double* x, double* y, int n, double t) {
     double *mat = malloc((n*n) * sizeof(double));
-    int j=0;    // row
-    int m=0;    // column
+    int j = 0;    // row
+    int m = 0;    // column
     double result = 0;
     
     // copy y-values to first column of matrix

@@ -9,8 +9,8 @@ double  f       (double x);                                                 // a
 
 
 int main() {
-    double x0 = -3;
-    double x1 = -2;
+    double x0 = -2;
+    double x1 = -4;
     double tau = 0.0001;
 
     double result = secant(&f, x0, x1, tau);
@@ -22,7 +22,7 @@ int main() {
     Calculates a x-intercept of a function using the secant method.
 */
 double secant(double (*f)(double), double x0, double x1, double tau) {
-    assert(tau > 0);
+    assert(tau > 0 && x0 != x1);
 
     double xn = x1 - f(x1)*((x0-x1)/(f(x0) - f(x1)));       // x_2
 
@@ -45,6 +45,7 @@ double secant(double (*f)(double), double x0, double x1, double tau) {
     An arbitrary differentiable function to test the secant method.
 */
 double f(double x) {
-    return pow(x, 2) + 3*x + 1;      // triggers second condition of secant method
-    //return pow(x, 2) + 3*x + 2;      // triggers first condition of secant method
+    return x*x + x;
+    //return pow(x, 2) + 3*x + 1;      // triggers second condition of secant method
+    //return pow(x, 2) + 3*x + 4;      // triggers first condition of secant method
 }

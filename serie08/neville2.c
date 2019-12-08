@@ -20,8 +20,8 @@ int main(){
     for a particular value (t). It does not require to explicitly find the polynomial interpolation.
 */
 double neville(double* x, double* y, int n, double t) {
-    int j=0;    // row
-    int m=0;    // column
+    int j = 0;    // row
+    int m = 0;    // column
 
     // complete matrix according to Neville's method
     for (m = 1; m < n; ++m) {
