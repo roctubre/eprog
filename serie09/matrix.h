@@ -35,9 +35,32 @@ double      getMatrixEntry  (Matrix* A, int j, int k);
 // sets a matrix element
 void        setMatrixEntry  (Matrix* A, int j, int k, double x);
 
-// returns the Frobeniusnorm (EXERCISE 9.4)
-// Complexity: O(m*n)
+/*  
+    EXERCISE 9.4
+    Return the Frobeniusnorm 
+    Complexity: O(m*n)
+*/
 double      frobeniusNorm   (Matrix* A);
+
+/*  
+    EXERCISE 9.5
+    Create a shallow copy of a matrix. 
+    A shallow copy only copies members of an object, but not the objects 
+    pointed to by those members.
+*/
+Matrix*     shallowCopy     (Matrix* A);
+
+/*  
+    EXERCISE 9.5
+    Create a complete copy of a matrix including data from dynamic allocated memory.
+*/
+Matrix*     deepCopy        (Matrix* A);
+
+/*
+    EXERCISE 9.6
+    Return the matrix-matrix-product of two matrices.
+*/
+Matrix*     matrixMatrix    (Matrix* A, Matrix* B);
 
 
 #endif

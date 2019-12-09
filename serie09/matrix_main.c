@@ -20,8 +20,32 @@ int main() {
     setMatrixEntry(mat, 2, 0, 4);
     printMatrix(mat);
 
-    printf("Frobeniusnorm: %lf", frobeniusNorm(mat));
+    printf("### Frobeniusnorm: %lf\n", frobeniusNorm(mat));
+
+    // Shallow and deep copy
+    printf("\n### TEST SHALLOW/DEPP COPY ###\n");
     
+    Matrix* s_copy = shallowCopy(mat);
+    Matrix* d_copy = deepCopy(mat);
+    
+    printf("Set shallow copy at [0,0] to 999\n");
+    setMatrixEntry(s_copy, 0, 0, 999);
+    printf("Shallow Copy:\n");
+    printMatrix(s_copy);
+    printf("Original:\n");
+    printMatrix(mat);
+
+    printf("\nSet deep copy at [0,0] to 555\n");
+    setMatrixEntry(d_copy, 0, 0, 555);
+    printf("Deep Copy:\n");
+    printMatrix(d_copy);
+    printf("Original:\n");
+    printMatrix(mat);
+
+
     // cleanup
+    s_copy->data = NULL;
     delMatrix(mat);
+    delMatrix(s_copy);
+    delMatrix(d_copy);
 }
