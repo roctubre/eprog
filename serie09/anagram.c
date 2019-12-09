@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <string.h>
 
-#define MAXLEN 1028
+#define MAXLEN 1024
 
 int     anagram     (char* firstStr, char* secondStr);
 void    quickSort   (char* x, int n);
@@ -32,6 +32,12 @@ int main() {
     else {
         printf("Strings are not anagrams.");
     }
+
+    // clean up
+    free(str1);
+    free(str2);
+    str1 = NULL;
+    str2 = NULL;
 }
 
 
@@ -49,8 +55,8 @@ int anagram(char* firstStr, char* secondStr) {
     quickSort(secondStr, strlen(secondStr));
 
     // compare sorted strings using strcmp() from string.h
-    // strcmp() returns 0 if strings are equal, but according to the task 
-    // we have to return 1 if they are anagrams of each other.
+    // strcmp() returns 0 if strings are equal, so according to the task 
+    // if the sorted arrays are equal (= anagrams) return 1.
     return strcmp(firstStr, secondStr) == 0 ? 1 : 0;
 }
 

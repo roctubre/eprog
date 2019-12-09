@@ -5,3 +5,5 @@
 !.gitignore
 !serie*/
 !*.c
+!*.cpp
+!*.h
