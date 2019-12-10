@@ -1,23 +1,22 @@
 /* 
     HOW TO COMPILE and RUN:
-    1. Compile matrix and vector object-code (create .o file)
-        gcc -c vector.c
+    1. Compile matrix object-code (create .o file)
         gcc -c matrix.c
     2. Compile main + object file
-        gcc matrix_main.c matrix.o vector.o -o matrix
+        gcc matrixMatrix.c matrix.o -o matrixMatrix
     3. Execute (Windows)
-        ./matrix.exe
+        ./matrixMatrix.exe
 */
 
 #include "matrix.h"
 
-void test_ex96_multiplication();
+void test_ex96_matrixMatrix();
 
 int main() {
-    test_ex96_multiplication();
+    test_ex96_matrixMatrix();
 }
 
-void test_ex96_multiplication() {
+void test_ex96_matrixMatrix() {
     printf("\n### TEST MATRIX-MATRIX PRODUCT ###\n");
     int m = 2;
     int n = 3;
@@ -49,7 +48,4 @@ void test_ex96_multiplication() {
     delMatrix(mat1);
     delMatrix(mat2);
     delMatrix(product);
-    mat1 = NULL;
-    mat2 = NULL;
-    product = NULL;
 }
