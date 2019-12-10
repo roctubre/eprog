@@ -45,7 +45,7 @@ char* dec2bin (int n) {
         }
     }
     bin[s++] = '\0';
-    realloc(bin, s);    // adjust array size
+    bin = realloc(bin, s);    // adjust array size
 
     return bin;
 }
