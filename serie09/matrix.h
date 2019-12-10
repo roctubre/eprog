@@ -1,11 +1,12 @@
-#ifndef MATRIX_H
-#define MATRIX_H
+#ifndef _STRUCT_MATRIX_
+#define _STRUCT_MATRIX_
 
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <math.h>
+#include "vector.h"
 
 // declaration of datatype Matrix
 typedef struct matrix {
@@ -58,9 +59,17 @@ Matrix*     deepCopy        (Matrix* A);
 
 /*
     EXERCISE 9.6
-    Return the matrix-matrix-product of two matrices.
+    Return the Matrix-vector product of two matrices.
+    Complexity: O(m*n*p)
 */
 Matrix*     matrixMatrix    (Matrix* A, Matrix* B);
+
+/*
+    EXERCISE 9.7
+    Return the Matrix-Vector product y = Ax.
+    Complexity: O(m*n)
+*/
+Vector*     matrixVector    (Matrix* A, Vector* x);
 
 
 #endif

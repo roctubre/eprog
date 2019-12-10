@@ -115,3 +115,52 @@ Matrix* deepCopy(Matrix* A) {
 
     return copy;
 }
+
+
+Matrix* matrixMatrix(Matrix* A, Matrix* B) {
+    assert(A != NULL && B != NULL);
+    assert(A->m > 0 && A->n > 0);
+    assert(B->m > 0 && B->n > 0);
+    assert(A->n == B->m);
+
+    int m = A->m;
+    int n = B->n;
+    int p = A->n;
+    int j, k, x;
+    Matrix* product = newMatrix(m, n);
+
+    for (j = 0; j < m; ++j) {
+        for (k = 0; k < n; ++k) {
+            for (x = 0; x < p; ++x) {
+                setMatrixEntry( product, j, k, 
+                                getMatrixEntry(product, j, k) + 
+                                getMatrixEntry(A, j, x) * getMatrixEntry(B, x, k));
+            }
+        }
+    }
+
+    return product;
+}
+
+
+Vector* matrixVector(Matrix* A, Vector* x) {
+    assert(A != NULL && x != NULL);
+    assert(A->m > 0 && A->n > 0);
+    assert(x->n > 0);
+    assert(A->n == x->n);
+
+    int m = A->m;
+    int n = A->n;
+    int j, k;
+    Vector* product = newVector(m);
+    
+    for (j = 0; j < m; ++j) {
+        for (k = 0; k < n; ++k) {
+            setVectorEntry( product, j,
+                            getVectorEntry(product, j) +
+                            getMatrixEntry(A, j, k) * getVectorEntry(x, k));
+        }
+    }
+
+    return product;
+}
