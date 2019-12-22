@@ -3,6 +3,7 @@
 #include "triangle.hpp"
 #include "ellipse.hpp"
 #include "university.hpp"
+#include "name.hpp";
 
 using std::cin;
 using std::cout;
@@ -14,6 +15,7 @@ void task_10_2_ellipse();
 void task_10_3_palindrom();
 bool isPalindrome(string);
 void task_10_4_university();
+void task_10_5_name();
 
 
 int main()
@@ -21,7 +23,8 @@ int main()
     //task_10_1_triangle();
     //task_10_2_ellipse();
     //task_10_3_palindrom();
-    task_10_4_university();
+    //task_10_4_university();
+    task_10_5_name();
 }
 
 
@@ -83,4 +86,19 @@ void task_10_4_university() {
     cout << "Student graduated!" << endl;
     u.graduate();
     cout << "Student graduated!" << endl;
+}
+
+void task_10_5_name() {
+    Name n("Max Maxi Mustermann");
+    Name m("Bob Baumeister");
+    Name o("Adolph Blaine Charles David Earl Frederick Gerald Hubert Irvin John Kenneth Lloyd Martin Nero Oliver Paul Quincy Randolph Sherman Thomas Uncas Victor William Xerxes Yancy Zeus Wolfe");
+
+    cout << n.getFirstName() << " " << n.getSurname() << endl;
+    n.printName();
+
+    cout << m.getFirstName() << " " << m.getSurname() << endl;
+    m.printName();
+
+    cout << o.getFirstName() << " " << o.getSurname() << endl;
+    o.printName();
 }
