@@ -1,10 +1,8 @@
-// task_10_1_triangle.cpp : Diese Datei enthält die Funktion "main". Hier beginnt und endet die Ausführung des Programms.
-//
-
 #include <iostream>
 #include <string>
 #include "triangle.hpp"
 #include "ellipse.hpp"
+#include "university.hpp"
 
 using std::cin;
 using std::cout;
@@ -15,13 +13,15 @@ void task_10_1_triangle();
 void task_10_2_ellipse();
 void task_10_3_palindrom();
 bool isPalindrome(string);
+void task_10_4_university();
 
 
 int main()
 {
     //task_10_1_triangle();
     //task_10_2_ellipse();
-    task_10_3_palindrom();
+    //task_10_3_palindrom();
+    task_10_4_university();
 }
 
 
@@ -66,4 +66,21 @@ bool isPalindrome(string word) {
         }
     }
     return true;
+}
+
+void task_10_4_university() {
+    University u("TU", 3);
+    cout << "Name: " << u.getCity() << ", Students: " << u.getNumStudents() << endl;
+    u.graduate();
+    cout << "Student graduated!" << endl;
+    u.graduate();
+    cout << "Student graduated!" << endl;
+    u.newStudent();
+    cout << "New Student enrolled!" << endl;
+    u.graduate();
+    cout << "Student graduated!" << endl;
+    u.graduate();
+    cout << "Student graduated!" << endl;
+    u.graduate();
+    cout << "Student graduated!" << endl;
 }
