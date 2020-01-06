@@ -4,6 +4,7 @@
 #include "ellipse.hpp"
 #include "university.hpp"
 #include "name.hpp"
+#include "kunde.hpp"
 
 using std::cin;
 using std::cout;
@@ -16,6 +17,7 @@ void task_10_3_palindrom();
 bool isPalindrome(string);
 void task_10_4_university();
 void task_10_5_name();
+void task_10_6_Kunde();
 void task_10_7_roman();
 string int2roman(int n);
 int roman2int(string s);
@@ -39,7 +41,8 @@ int main()
     //task_10_3_palindrom();
     //task_10_4_university();
     //task_10_5_name();
-    task_10_7_roman();
+    task_10_6_Kunde();
+    //task_10_7_roman();
 }
 
 
@@ -116,6 +119,14 @@ void task_10_5_name() {
 
     cout << o.getFirstName() << " " << o.getSurname() << endl;
     o.printName();
+}
+
+void task_10_6_Kunde() {
+    Kunde kunde("Bobs", 1234, 100);
+    kunde.printBalance();
+    kunde.drawMoney(95);
+    kunde.printBalance();
+    kunde.drawMoney(10);
 }
 
 void task_10_7_roman() {
