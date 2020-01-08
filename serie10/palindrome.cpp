@@ -5,6 +5,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
+using std::tolower;
 
 bool isPalindrome(string);
 
@@ -31,11 +32,12 @@ int main(int argc, char *argv[]) {
 
 /*
 	Check if a given string is a palindrome.
-	A palindrome is a word, which when read forward and backward, are spelled the same.
+	A palindrome is a word, number, phrase, or other sequence of characters 
+	which reads the same backward as forward.
 */
 bool isPalindrome(string word) {
     for (int i = 0; i < (int)word.length() / 2; ++i) {
-        if (word[i] != word[((int)word.length() - 1) - i]) {
+        if (tolower(word[i]) != tolower(word[((int)word.length() - 1) - i])) {
             return false;
         }
     }

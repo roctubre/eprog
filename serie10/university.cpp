@@ -28,7 +28,7 @@ int University::getNumStudents()
 
 void University::graduate()
 {
-	assert(this->num_students > 0);
+	assert(this->num_students > 0 && "No students left...");
 	this->num_students--;
 }
 

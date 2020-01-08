@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
 
 using std::cin;
 using std::cout;
@@ -9,11 +11,20 @@ using std::string;
 string int2roman(int n);
 int roman2int(string s);
 
-int main()
+int main(int argc, char *argv[])
 {
-    int z = 494;
-    cout << int2roman(z) << endl;
-    cout << roman2int(int2roman(z)) << endl;
+	if (argc == 2) {
+		int z = std::stoi(argv[1]);
+		assert(z >= 0 && z <= 3999);
+		cout << "Converting to roman..." << endl;
+		cout << int2roman(z) << endl;
+		cout << "and back to decimal ..." << endl;
+		cout << roman2int(int2roman(z)) << endl;
+	}
+	else {
+		cout << "Usage: " << argv[0] << " <0-3999>" << endl;
+	}
+
 }
 
 /*
@@ -45,7 +56,7 @@ string int2roman(int n) {
 int roman2int(string s) {
     int total = 0;
     const char* letters = s.c_str();
-    int len = strlen(letters);
+    int len = s.length();
     for (int i = 0; i < len; i++) {
         if (s[i] == 'I') {
             if (i < len && letters[i + 1] == 'V') {
