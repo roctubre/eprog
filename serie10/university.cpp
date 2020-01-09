@@ -1,5 +1,7 @@
 #include "university.hpp"
 
+using std::string;
+
 University::University(string city, int num_student)
 {
 	this->city = city;

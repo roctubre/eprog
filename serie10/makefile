@@ -1,43 +1,44 @@
 COMPILER = g++
+FLAGS = -std=c++11
 
 triangle: triangle.o triangle_main.cpp
-	${COMPILER} triangle_main.cpp triangle.o -o triangle
+	${COMPILER} ${FLAGS} triangle_main.cpp triangle.o -o triangle
 	
 triangle.o: triangle.cpp
-	${COMPILER} -c triangle.cpp
+	${COMPILER} ${FLAGS} -c triangle.cpp 
 
 ellipse: ellipse.o ellipse_main.cpp
-	${COMPILER} ellipse_main.cpp ellipse.o -o ellipse
+	${COMPILER} ${FLAGS} ellipse_main.cpp ellipse.o -o ellipse
 
 ellipse.o: ellipse.cpp
-	${COMPILER} -c ellipse.cpp
+	${COMPILER} ${FLAGS} -c ellipse.cpp
 
 palindrome: palindrome.cpp
-	${COMPILER} palindrome.cpp -o palindrome
+	${COMPILER} ${FLAGS} palindrome.cpp -o palindrome
 
 university: university.o university_main.cpp
-	${COMPILER} university_main.cpp university.o -o university
+	${COMPILER} ${FLAGS} university_main.cpp university.o -o university
 
 university.o: university.cpp
-	${COMPILER} -c university.cpp
+	${COMPILER} ${FLAGS} -c university.cpp
 	
 name: name.o name_main.cpp
-	${COMPILER} name_main.cpp name.o -o name
+	${COMPILER} ${FLAGS} name_main.cpp name.o -o name
 
 name.o: name.cpp
-	${COMPILER} -c name.cpp
+	${COMPILER} ${FLAGS} -c name.cpp
 	
 kunde: kunde.o kunde_main.cpp
-	${COMPILER} kunde_main.cpp kunde.o -o kunde
+	${COMPILER} ${FLAGS} kunde_main.cpp kunde.o -o kunde
 
 kunde.o: kunde.cpp
-	${COMPILER} -c kunde.cpp
+	${COMPILER} ${FLAGS} -c kunde.cpp
 
 roman: roman.cpp
-	${COMPILER} roman.cpp -o roman
+	${COMPILER} ${FLAGS} roman.cpp -o roman
 	
 test: test.cpp
-	${COMPILER} test.cpp -o test
+	${COMPILER} ${FLAGS} test.cpp -o test
 	
 clean:
 	rm -f triangle*.o triangle.exe* triangle

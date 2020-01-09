@@ -30,7 +30,7 @@ bool Ellipse::isInside(double x, double y)
 
 bool Ellipse::isCircle()
 {
-	return a == b;
+	return fabs(this->a - this->b) < 1e-5;
 }
 
 void Ellipse::printFocalPoints()

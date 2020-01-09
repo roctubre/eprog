@@ -1,5 +1,9 @@
 #include "name.hpp"
 
+using std::string;
+using std::cout;
+using std::endl;
+
 Name::Name(string full_name)
 {
 	this->setFullName(full_name);

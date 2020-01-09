@@ -17,10 +17,10 @@ private:
 public:
 	void setCenter(double, double);
 
-	// ret radius parallel to the x-axis
+	// set radius parallel to the x-axis
 	void setA(double);
 
-	// ret radius parallel to the y-axis
+	// set radius parallel to the y-axis
 	void setB(double);
 
 	// check if point is inside or on the ellipse

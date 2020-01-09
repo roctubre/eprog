@@ -13,6 +13,7 @@ public:
 	void setX(double, double);
 	void setY(double, double);
 	void setZ(double, double);
+	
 	double getArea();
 	double getPerimeter();
 	bool isEquilateral();

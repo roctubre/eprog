@@ -1,4 +1,9 @@
-#include "Kunde.hpp"
+#include "kunde.hpp"
+
+using std::string;
+using std::cout;
+using std::cin;
+using std::endl;
 
 Kunde::Kunde(string name, int pin, double balance)
 {

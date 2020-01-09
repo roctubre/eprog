@@ -4,21 +4,19 @@
 #include <string>
 #include <assert.h>
 
-using std::string;
-
 class University
 {
 private:
-	string city;
+	std::string city;
 	int num_students;
 
 public:
 	// Constructor
-	University(string, int);
+	University(std::string, int);
 
 	// get and set methods for city name
-	void setCity(string);
-	string getCity();
+	void setCity(std::string);
+	std::string getCity();
 
 	// get and set methods for student number
 	void setNumStudents(int);

@@ -7,27 +7,22 @@
 
 #define m_assert(expr, msg) assert(( (void)(msg), (expr) ))
 
-using std::string;
-using std::cout;
-using std::cin;
-using std::endl;
-
 class Kunde
 {
 private:
-	string name;
+	std::string name;
 	int pin;
 	double balance;
 
 public:
 	// Constructor
-	Kunde(string name, int pin, double balance = 0);
+	Kunde(std::string name, int pin, double balance = 0);
 
 	// get/set methods for datafields
-	void setName(string);
+	void setName(std::string);
 	void setPin(int);
 	void setBalance(double);
-	string getName();
+	std::string getName();
 	double getBalance();
 
 	// Print out current balance
