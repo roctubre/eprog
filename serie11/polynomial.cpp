@@ -2,6 +2,8 @@
 
 using namespace std;
 
+double factorial(int k);
+
 Polynomial::Polynomial(int degree) {
 	assert(degree >= 0 && "Non-negative degree required");
 	this->pdegree = degree;
@@ -74,4 +76,35 @@ double Polynomial::eval(double x) const
 		result += this->coefficients[n] * pow(x, n);
 	}
 	return result;
+}
+
+const Polynomial Polynomial::diff(int k) const
+{
+	assert(k >= 0 && "Non-negative degree required");
+	if (this->pdegree < k) {
+		Polynomial p(0);
+		return p;
+	}
+	else if (this->pdegree == k) {
+		Polynomial p(0);
+		p.setCoefficient(0, this->getCoefficient(k)*factorial(k));
+		return p;
+	}
+	else {
+		Polynomial p(this->pdegree - k);
+		for (int i = 0, n = k; i <= p.pdegree; ++i, ++n) {
+			p.coefficients[i] = this->coefficients[n] * factorial(n);
+		}
+		return p;
+	}
+}
+
+
+
+double factorial(int k) {
+	double f = 1;
+	for (; k > 0; --k) {
+		f *= k;
+	}
+	return f;
 }
