@@ -33,6 +33,10 @@ public:
 	// get/set methods for coefficients
 	void setCoefficient(int degree, double value);
 	double getCoefficient(int degree) const;
+
+	// Exercises 11.2.
+	// Evaluates the polynomial for a given value
+	double eval(double x) const;
 };
 
 #endif

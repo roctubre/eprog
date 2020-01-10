@@ -3,7 +3,7 @@
 using namespace std;
 
 Polynomial::Polynomial(int degree) {
-	assert(degree > 0 && "Non-negative degree required");
+	assert(degree >= 0 && "Non-negative degree required");
 	this->pdegree = degree;
 	this->coefficients = (double*) malloc( (degree + 1)*sizeof(double) );
 
@@ -65,4 +65,13 @@ void Polynomial::setCoefficient(int degree, double value) {
 double Polynomial::getCoefficient(int degree) const {
 	assert(degree >= 0 && degree <= this->pdegree && "degree out of range");
 	return this->coefficients[degree];
+}
+
+double Polynomial::eval(double x) const
+{
+	double result = 0;
+	for (int n = 0; n <= this->pdegree; ++n) {
+		result += this->coefficients[n] * pow(x, n);
+	}
+	return result;
 }
