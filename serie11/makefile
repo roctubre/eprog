@@ -7,5 +7,9 @@ polynomial: polynomial.o polynomial_main.cpp
 polynomial.o: polynomial.cpp
 	${COMPILER} ${FLAGS} -c polynomial.cpp
 	
+addpolynomials: polynomial.o addpolynomials.cpp
+	${COMPILER} ${FLAGS} addpolynomials.cpp polynomial.o -o addpolynomials
+	
 clean:
 	rm -f polynomial*.o polynomial.exe* polynomial
+	rm -f addpolynomials.exe* addpolynomials
