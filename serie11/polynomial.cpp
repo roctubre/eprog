@@ -115,12 +115,20 @@ double Polynomial::compuateZero(double x0, double tau) const
 	Polynomial diff = this->diff(1);
 	double x = x0;
 	double x_prev;
+	int max_iter = 10000;	// in case of no zeroes
 
 	do {
 		x_prev = x;
 		x = x_prev - eval(x_prev) / diff.eval(x_prev);
+
+		if (--max_iter == 0) {	
+			cout << "Might not have a solution" << endl;
+			break;
+		}
 	} while (fabs(eval(x)) > tau || fabs(x - x_prev) > tau);
 	
+
+
 	return x;
 }
 
