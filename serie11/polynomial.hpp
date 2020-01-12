@@ -41,6 +41,10 @@ public:
 	// Exercise 11.3.
 	// Returns the k-th derivative of the polynomial
 	const Polynomial diff(int k) const;
+
+	// Exercise 11.7.
+	// Computes the integral of the polynomial
+	double computeIntegral(double alpha, double beta) const;
 };
 
 #endif

@@ -13,7 +13,11 @@ addpolynomials: polynomial.o addpolynomials.cpp
 prodpolynomials: polynomial.o prodpolynomials.cpp
 	${COMPILER} ${FLAGS} prodpolynomials.cpp polynomial.o -o prodpolynomials
 	
+comparepolynomials: polynomial.o comparepolynomials.cpp
+	${COMPILER} ${FLAGS} comparepolynomials.cpp polynomial.o -o comparepolynomials	
+
 clean:
 	rm -f polynomial*.o polynomial.exe* polynomial
 	rm -f addpolynomials.exe* addpolynomials
 	rm -f prodpolynomials.exe* prodpolynomials
+	rm -f comparepolynomials.exe* comparepolynomials

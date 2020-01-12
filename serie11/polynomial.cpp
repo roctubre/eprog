@@ -99,6 +99,16 @@ const Polynomial Polynomial::diff(int k) const
 	}
 }
 
+double Polynomial::computeIntegral(double alpha, double beta) const
+{
+	assert(alpha < beta && "alpha must be less than beta");
+
+	double sum = 0;
+	for (int n = 0; n <= this->pdegree; ++n) {
+		sum += (this->coefficients[n] * (pow(beta, n + 1) - pow(alpha, n + 1))) / (n + 1);
+	}
+	return sum;
+}
 
 
 double factorial(int k) {

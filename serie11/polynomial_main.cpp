@@ -43,9 +43,16 @@ const Polynomial prodPolynomials(double, const Polynomial&);
 
 /*  Exercise 11.6.
     Compare two polynomials.
+    Since the coeffiecents are stored as double, a toleranz must be used for comparison.
 */
 void test_11_6_compare();
 bool comparePolynomials(const Polynomial&, const Polynomial&);
+
+/*  Exercise 11.7.
+    Compute the integral value of a polynomial.
+    The formula used is the sum of each integrated term in the polynomial.
+*/
+void test_11_7_integral();
 
 int main()
 {
@@ -54,7 +61,8 @@ int main()
     //test_11_3_diff();
     //test_11_4_add();
     //test_11_5_prod();
-    test_11_6_compare();
+    //test_11_6_compare();
+    test_11_7_integral();
 }
 
 void test_11_1_class() {
@@ -260,4 +268,17 @@ bool comparePolynomials(const Polynomial& p, const Polynomial& q) {
     }
 
     return true;
+}
+
+void test_11_7_integral() {
+    Polynomial p(3);
+    p.setCoefficient(0, 2);
+    p.setCoefficient(1, 3);
+    p.setCoefficient(2, 4);
+    cout << p.degree() << " - "
+        << p.getCoefficient(0) << ", "
+        << p.getCoefficient(1) << ", "
+        << p.getCoefficient(2) << endl;
+
+    cout << "Integral value (1, 7) = " << p.computeIntegral(1, 7) << endl;
 }
