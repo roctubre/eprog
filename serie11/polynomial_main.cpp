@@ -54,6 +54,12 @@ bool comparePolynomials(const Polynomial&, const Polynomial&);
 */
 void test_11_7_integral();
 
+/*  Exercise 11.8.
+    Compute a zero of a polynomial.
+*/
+void test_11_8_zero();
+
+
 int main()
 {
     //test_11_1_class();
@@ -62,7 +68,8 @@ int main()
     //test_11_4_add();
     //test_11_5_prod();
     //test_11_6_compare();
-    test_11_7_integral();
+    //test_11_7_integral();
+    test_11_8_zero();
 }
 
 void test_11_1_class() {
@@ -281,4 +288,17 @@ void test_11_7_integral() {
         << p.getCoefficient(2) << endl;
 
     cout << "Integral value (1, 7) = " << p.computeIntegral(1, 7) << endl;
+}
+
+void test_11_8_zero() {
+    Polynomial p(3);
+    p.setCoefficient(0, -2);
+    p.setCoefficient(1, 3);
+    p.setCoefficient(2, 4);
+    cout << p.degree() << " - "
+        << p.getCoefficient(0) << ", "
+        << p.getCoefficient(1) << ", "
+        << p.getCoefficient(2) << endl;
+
+    cout << "Zero (7) = " << p.compuateZero(7, 0.001) << endl;
 }

@@ -45,6 +45,10 @@ public:
 	// Exercise 11.7.
 	// Computes the integral of the polynomial
 	double computeIntegral(double alpha, double beta) const;
+
+	// Exercise 11.8.
+	// Compute a zero of the polynomial
+	double compuateZero(double x0, double tau) const;
 };
 
 #endif

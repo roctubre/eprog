@@ -110,6 +110,20 @@ double Polynomial::computeIntegral(double alpha, double beta) const
 	return sum;
 }
 
+double Polynomial::compuateZero(double x0, double tau) const
+{
+	Polynomial diff = this->diff(1);
+	double x = x0;
+	double x_prev;
+
+	do {
+		x_prev = x;
+		x = x_prev - eval(x_prev) / diff.eval(x_prev);
+	} while (fabs(eval(x)) > tau || fabs(x - x_prev) > tau);
+	
+	return x;
+}
+
 
 double factorial(int k) {
 	double f = 1;
