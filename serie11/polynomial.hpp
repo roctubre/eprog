@@ -1,6 +1,7 @@
 #ifndef _POLYNOMIAL_CLASS_
 #define _POLYNOMIAL_CLASS_
 
+#include <cstdlib>
 #include <cstdio>
 #include <cmath>
 #include <cassert>
@@ -48,7 +49,7 @@ public:
 
 	// Exercise 11.8.
 	// Compute a zero of the polynomial
-	double compuateZero(double x0, double tau) const;
+	double computeZero(double x0, double tau) const;
 };
 
 #endif

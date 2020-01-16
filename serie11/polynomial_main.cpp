@@ -74,7 +74,7 @@ int main()
 
 void test_11_1_class() {
     Polynomial p(2);
-
+    
     p.setCoefficient(0, 2);
     p.setCoefficient(1, 3);
     p.setCoefficient(2, 4);
@@ -82,9 +82,9 @@ void test_11_1_class() {
     cout << p.getCoefficient(0) << endl;
     cout << p.getCoefficient(1) << endl;
     cout << p.getCoefficient(2) << endl << endl;
-
-
+    
     Polynomial c = p;
+    
     cout << c.degree() << endl;
     cout << c.getCoefficient(0) << endl;
     cout << c.getCoefficient(1) << endl;
@@ -96,6 +96,7 @@ void test_11_1_class() {
     cout << p.getCoefficient(0) << endl;
     cout << p.getCoefficient(1) << endl;
     cout << p.getCoefficient(2) << endl << endl;
+    
 }
 
 void test_11_2_eval() {
@@ -300,5 +301,5 @@ void test_11_8_zero() {
         << p.getCoefficient(1) << ", "
         << p.getCoefficient(2) << endl;
 
-    cout << "Zero (7) = " << p.compuateZero(7, 0.001) << endl;
+    cout << "Zero (7) = " << p.computeZero(7, 0.001) << endl;
 }

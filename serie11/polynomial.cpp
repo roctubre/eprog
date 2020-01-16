@@ -16,17 +16,12 @@ Polynomial::Polynomial(int degree) {
 }
 
 Polynomial::Polynomial(const Polynomial& src) {
-	if (this->coefficients) {
-		free(this->coefficients);
-		this->coefficients = nullptr;
-	}
-
-	this->pdegree = src.pdegree;
-	this->coefficients = (double*) malloc( (src.pdegree + 1) * sizeof(double) );
+	this->pdegree = src.degree();
+	this->coefficients = (double*) malloc( (src.degree() + 1) * sizeof(double) );
 
 	assert(this->coefficients && "memory allocation failed");
-	for (int d = 0; d <= src.pdegree; ++d) {
-		this->coefficients[d] = src.coefficients[d];
+	for (int d = 0; d <= src.degree(); ++d) {
+		this->coefficients[d] = src.getCoefficient(d);
 	}
 }
 
@@ -40,15 +35,15 @@ Polynomial& Polynomial::operator=(const Polynomial& rhs) {
 	if (this != &rhs) {
 		if (this->coefficients) {
 			free(this->coefficients);
-			this->coefficients = nullptr;
+			this->coefficients = NULL;
+		}
 
-			this->pdegree = rhs.pdegree;
-			this->coefficients = (double*) malloc( (rhs.pdegree + 1) * sizeof(double) );
+		this->pdegree = rhs.degree();
+		this->coefficients = (double*) malloc( (rhs.degree() + 1) * sizeof(double) );
 
-			assert(this->coefficients && "memory allocation failed");
-			for (int d = 0; d <= rhs.pdegree; ++d) {
-				this->coefficients[d] = rhs.coefficients[d];
-			}
+		assert(this->coefficients && "memory allocation failed");
+		for (int d = 0; d <= rhs.degree(); ++d) {
+			this->coefficients[d] = rhs.getCoefficient(d);
 		}
 	}
 
@@ -110,7 +105,7 @@ double Polynomial::computeIntegral(double alpha, double beta) const
 	return sum;
 }
 
-double Polynomial::compuateZero(double x0, double tau) const
+double Polynomial::computeZero(double x0, double tau) const
 {
 	Polynomial diff = this->diff(1);
 	double x = x0;
