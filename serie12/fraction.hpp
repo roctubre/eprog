@@ -23,18 +23,12 @@ public:
 	// Copy constructor
 	Fraction(const Fraction&);
 
-	// Destructor
-	~Fraction();
-
 	// Assignment operator
-	Fraction& operator=(const Fraction& rhs);
+	Fraction& operator=(const Fraction&);
 
 	// Get methods
 	int getNumerator() const;
 	int getDenominator() const;
-
-	// Print fraction
-	void print() const;
 
 	// Shortens to the smallest possible fraction
 	void reduce();
@@ -60,13 +54,20 @@ int gcd(int, int);
 int lcm(int, int);
 
 // Exercise 12.4.
-const Fraction operator+(const Fraction& x, const Fraction& y);
-const Fraction operator-(const Fraction& x, const Fraction& y);
-const Fraction operator*(const Fraction& x, const Fraction& y);
-const Fraction operator/(const Fraction& x, const Fraction& y);
+const Fraction operator+(const Fraction&, const Fraction&);
+const Fraction operator-(const Fraction&, const Fraction&);
+const Fraction operator*(const Fraction&, const Fraction&);
+const Fraction operator/(const Fraction&, const Fraction&);
 
 // Exercise 12.5.
-std::ostream& operator<<(std::ostream& output, const Fraction& x);
+std::ostream& operator<<(std::ostream&, const Fraction&);
 
+// Exercise 12.6.
+bool operator==(const Fraction&, const Fraction&);
+bool operator!=(const Fraction&, const Fraction&);
+bool operator>(const Fraction&, const Fraction&);
+bool operator<(const Fraction&, const Fraction&);
+bool operator>=(const Fraction&, const Fraction&);
+bool operator<=(const Fraction&, const Fraction&);
 
 #endif

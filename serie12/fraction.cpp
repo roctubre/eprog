@@ -21,10 +21,6 @@ Fraction::Fraction(const Fraction& f)
 	this->q = f.q;
 }
 
-Fraction::~Fraction()
-{
-}
-
 Fraction& Fraction::operator=(const Fraction& rhs)
 {
 	if (this != &rhs) {
@@ -42,11 +38,6 @@ int Fraction::getNumerator() const
 int Fraction::getDenominator() const
 {
 	return this->q;
-}
-
-void Fraction::print() const
-{
-	cout << p << "/" << q << endl;
 }
 
 void Fraction::reduce()
@@ -108,7 +99,6 @@ Fraction::Fraction(double x)
 
 	this->p = p;
 	this->q = q;
-
 }
 
 const Fraction Fraction::operator-() const
@@ -178,4 +168,34 @@ const Fraction operator/(const Fraction& x, const Fraction& y)
 std::ostream& operator<<(std::ostream& output, const Fraction& x)
 {
 	return output << x.getNumerator() << "/" << x.getDenominator();
+}
+
+bool operator==(const Fraction& x, const Fraction& y)
+{
+	return x.getNumerator() * y.getDenominator() == y.getNumerator() * x.getDenominator();
+}
+
+bool operator!=(const Fraction& x, const Fraction& y)
+{
+	return !(x == y);
+}
+
+bool operator>(const Fraction& x, const Fraction& y)
+{
+	return x.getNumerator() * y.getDenominator() > y.getNumerator()* x.getDenominator();
+}
+
+bool operator<(const Fraction& x, const Fraction& y)
+{
+	return x.getNumerator() * y.getDenominator() < y.getNumerator()* x.getDenominator();
+}
+
+bool operator>=(const Fraction& x, const Fraction& y)
+{
+	return x > y || x == y;
+}
+
+bool operator<=(const Fraction& x, const Fraction& y)
+{
+	return x < y || x == y;
 }
