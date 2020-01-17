@@ -1,5 +1,31 @@
 #include "fractionvector.hpp"
 
+void FractionVector::quickSort(Fraction* x, int n)
+{
+	if (n <= 1) return;                     // only continue if element count > 1
+
+	int j, k;
+	for (j = 0, k = 1; k < n; ++k) {
+		if (x[k] < x[0]) {                  // compare to pivot, swap values
+			++j;
+			if (k == j) continue;
+			x[j] = x[j] + x[k];
+			x[k] = x[j] - x[k];
+			x[j] = x[j] - x[k];
+		}
+	}
+
+	// swap pivot and last lesser element
+	if (j > 0) {
+		x[0] = x[0] + x[j];
+		x[j] = x[0] - x[j];
+		x[0] = x[0] - x[j];
+	}
+
+	quickSort(x, j++);          // sort lesser part
+	quickSort(x + j, n - j);    // sort greater part
+}
+
 FractionVector::FractionVector(int n)
 {
 	assert(n > 0 && "Size must be positive");
@@ -43,7 +69,7 @@ FractionVector& FractionVector::operator=(const FractionVector& rhs)
 FractionVector::~FractionVector()
 {
 	if (this->coeff) {
-		free(this->coeff);
+		delete[] this->coeff;
 	}
 }
 
@@ -66,7 +92,7 @@ void FractionVector::setCoefficient(int idx, const Fraction& f)
 
 void FractionVector::sort()
 {
-	//ToDo
+	quickSort(this->coeff, this->n);
 }
 
 std::ostream& operator<<(std::ostream& output, const FractionVector& f)

@@ -76,8 +76,8 @@ void test_12_5_sign() {
 void test_12_6_comparison() {
 	cout << endl << "### TEST 12.6 - Comparison Operators ###" << endl;
 
-	Fraction a(1, 2);
-	Fraction b(2, 3);
+	Fraction a(1, 3);
+	Fraction b(0, 1);
 	cout << a << " == " << b << " is " << (a == b ? "TRUE" : "FALSE") << endl;
 	cout << a << " != " << b << " is " << (a != b ? "TRUE" : "FALSE") << endl;
 	cout << a << " < " << b << " is " << (a < b ? "TRUE" : "FALSE") << endl;
@@ -114,5 +114,4 @@ void test_12_8_sort_fractionvector() {
 	cout << "Unsorted: " << x << endl;
 	x.sort();
 	cout << "Sorted: " << x << endl;
-
 }
