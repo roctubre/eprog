@@ -53,19 +53,18 @@ Fraction::operator double() const
 }
 
 Fraction::Fraction(double x)
-{	
+{
+	int sign = x < 0 ? 0 : 1;
+	x = fabs(x);
+
 	int p = 0;
 	int q = 1;
-	const double error = 10e-9;
+	double error = 1e-9;
 	int n = (int)x;
-	x -= n;
+	x -= (double)n;
 
-	if (x < error) {
+	if (x < error || 1 - x < error) {
 		p = n;
-		q = 1;
-	}
-	else if (1 - error < x) {
-		p = 1;
 		q = 1;
 	}
 	else {
@@ -75,7 +74,6 @@ Fraction::Fraction(double x)
 		int upper_d = 1;
 		int middle_n;
 		int middle_d;
-		int g;
 
 		while (true) {
 			middle_n = lower_n + upper_n;
@@ -89,7 +87,6 @@ Fraction::Fraction(double x)
 				lower_d = middle_d;
 			}
 			else {
-				g = gcd(p, q);
 				p = n * middle_d + middle_n;
 				q = middle_d;
 				break;
@@ -97,7 +94,7 @@ Fraction::Fraction(double x)
 		}
 	}
 
-	this->p = p;
+	this->p = p * (sign ? 1 : -1);
 	this->q = q;
 }
 

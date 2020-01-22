@@ -1,6 +1,3 @@
-// fraction.cpp : Diese Datei enthält die Funktion "main". Hier beginnt und endet die Ausführung des Programms.
-//
-
 #include <iostream>
 #include "fraction.hpp"
 #include "fractionvector.hpp"
@@ -26,12 +23,15 @@ int main()
 
 void test_12_3_typecasting() {
 	cout << endl << "### TEST 12.3 - Convert Double<>Fraction ###" << endl;
-
+	
 	Fraction a(3, 4);
 	cout << "3/4 to double: " << (double)a << endl;
 
-	Fraction b(1, 3);
-	cout << "1/3 to double: " << (double)b << endl;
+	Fraction b(-1, 3);
+	cout << "-1/3 to double: " << (double)b << endl;
+
+	Fraction e(-2);
+	cout << "-2 to fraction: " << e << endl;
 
 	Fraction f(3.14159265359);
 	cout << "3.14159265359 to fraction: " << f << endl;
@@ -41,6 +41,12 @@ void test_12_3_typecasting() {
 
 	Fraction h(0.606557377049);
 	cout << "0.606557377049 to fraction: " << h << endl;
+
+	Fraction i(0.333333333);
+	cout << "0.333333333 to fraction: " << i << endl;
+
+	Fraction j(-5.9999999999);
+	cout << "-5.9999999999 to fraction: " << j << endl;
 }
 
 void test_12_4_arithmetics() {
