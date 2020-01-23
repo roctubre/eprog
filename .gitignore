@@ -9,3 +9,5 @@
 !*.h
 !*.hpp
 !makefile
+!exams_solutions/
+!*solution.pdf
