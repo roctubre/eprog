@@ -21,6 +21,10 @@ Fraction::Fraction(const Fraction& f)
 	this->q = f.q;
 }
 
+Fraction::~Fraction()
+{
+}
+
 Fraction& Fraction::operator=(const Fraction& rhs)
 {
 	if (this != &rhs) {
@@ -100,8 +104,7 @@ Fraction::Fraction(double x)
 
 const Fraction Fraction::operator-() const
 {
-	Fraction f(-(this->p), this->q);
-	return f;
+	return Fraction(-(this->p), this->q);
 }
 
 int gcd(int a, int b)
@@ -157,6 +160,7 @@ const Fraction operator/(const Fraction& x, const Fraction& y)
 {
 	int p = x.getNumerator() * y.getDenominator();
 	int q = x.getDenominator() * y.getNumerator();
+	assert(q != 0 && "Can't divide by zero.");
 	Fraction f(p, q);
 	f.reduce();
 	return f;

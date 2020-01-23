@@ -28,27 +28,41 @@ void FractionVector::quickSort(Fraction* x, int n)
 
 FractionVector::FractionVector(int n)
 {
-	assert(n > 0 && "Size must be positive");
+	assert(n >= 0 && "Size must be non-negative");
 	this->n = n;
-	this->coeff = new Fraction[n];
+	if (n == 0) {
+		this->coeff = (Fraction*) 0;
+	}
+	else {
+		this->coeff = new Fraction[n];
+	}
 }
 
 FractionVector::FractionVector(int n, const Fraction* coeff)
 {
 	this->n = n;
-	this->coeff = new Fraction[n];
-	for (int i = 0; i < n; ++i) {
-		this->coeff[i] = coeff[i];
+	if (n == 0) {
+		this->coeff = (Fraction*)0;
+	}
+	else {
+		this->coeff = new Fraction[n];
+		for (int i = 0; i < n; ++i) {
+			this->coeff[i] = coeff[i];
+		}
 	}
 }
 
 FractionVector::FractionVector(const FractionVector& x)
 {
 	this->n = x.n;
-	this->coeff = new Fraction[x.n];
-
-	for (int i = 0; i < x.n; ++i) {
-		this->coeff[i] = x.coeff[i];
+	if (n == 0) {
+		this->coeff = (Fraction*)0;
+	}
+	else {
+		this->coeff = new Fraction[x.n];
+		for (int i = 0; i < x.n; ++i) {
+			this->coeff[i] = x.coeff[i];
+		}
 	}
 }
 
@@ -56,13 +70,16 @@ FractionVector& FractionVector::operator=(const FractionVector& rhs)
 {
 	if (this != &rhs) {
 		this->n = rhs.n;
-		this->coeff = new Fraction[rhs.n];
-
-		for (int i = 0; i < rhs.n; ++i) {
-			this->coeff[i] = rhs.coeff[i];
+		if (n == 0) {
+			this->coeff = (Fraction*)0;
+		}
+		else {
+			this->coeff = new Fraction[rhs.n];
+			for (int i = 0; i < rhs.n; ++i) {
+				this->coeff[i] = rhs.coeff[i];
+			}
 		}
 	}
-
 	return *this;
 }
 

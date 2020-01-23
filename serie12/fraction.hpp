@@ -23,6 +23,9 @@ public:
 	// Copy constructor
 	Fraction(const Fraction&);
 
+	// Destructor
+	~Fraction();
+
 	// Assignment operator
 	Fraction& operator=(const Fraction&);
 
@@ -30,7 +33,7 @@ public:
 	int getNumerator() const;
 	int getDenominator() const;
 
-	// Shortens to the smallest possible fraction
+	// Simplifies to the smallest possible fraction
 	void reduce();
 
 	// Exercise 12.3.

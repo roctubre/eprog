@@ -19,7 +19,7 @@ private:
 	void quickSort(Fraction*, int);
 public:
 	// Contructor
-	FractionVector(int n = 1);
+	FractionVector(int n = 0);
 
 	// Contructor with initialized fractions
 	FractionVector(int n, const Fraction* coeff);
